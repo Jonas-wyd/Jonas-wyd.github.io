@@ -1,0 +1,3495 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Meister Teil 3 & 4 Lernplattform | Wayand</title>
+    <meta
+      name="description"
+      content="Prüfungsnahe Lernplattform von Wayand für HWK Meister Teil 3 und 4 mit einfacher Modulauswahl, Fallfragen und direkter Auswertung."
+    />
+    <meta
+      name="keywords"
+      content="HWK Meister Teil 3, HWK Meister Teil 4, AEVO, Meisterprüfung üben, Fallfragen, Wayand"
+    />
+    <style>
+:root {
+  --bg: #ffffff;
+  --surface: rgba(255, 255, 255, 0.94);
+  --surface-solid: #ffffff;
+  --surface-soft: #f8f6f2;
+  --text: #18202a;
+  --muted: #67707c;
+  --line: #ded8cf;
+  --line-strong: #cdc4b6;
+  --primary: #1f3447;
+  --primary-soft: #ebf0f4;
+  --accent: #9f6a38;
+  --accent-soft: #f4ece3;
+  --success: #2b8558;
+  --success-soft: #eaf7ef;
+  --error: #bf5353;
+  --error-soft: #fbeeee;
+  --shadow: 0 18px 42px rgba(19, 27, 35, 0.07);
+  --shadow-soft: 0 10px 24px rgba(19, 27, 35, 0.05);
+  --radius-lg: 26px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text);
+  background: #ffffff;
+}
+
+button,
+input,
+select {
+  font: inherit;
+}
+
+.site-bg {
+  display: none;
+}
+
+.page-shell {
+  position: relative;
+  width: min(1160px, calc(100% - 28px));
+  margin: 0 auto;
+  padding: 18px 0 34px;
+}
+
+.quiz-topbar,
+.progress-meta,
+.quiz-actions,
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.card {
+  background: var(--surface);
+  border: 1px solid rgba(222, 216, 207, 0.94);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.hero-main,
+.start-panel,
+.choice-card,
+.level-card,
+.quiz-card,
+.instagram-card {
+  padding: 24px;
+}
+
+.eyebrow,
+.section-label,
+.module-level,
+.difficulty-badge,
+.topic-badge,
+.module-badge,
+.instagram-mini {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 11px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.eyebrow,
+.section-label,
+.module-badge {
+  background: var(--primary-soft);
+  color: var(--primary);
+}
+
+.hero-main h1 {
+  margin: 12px auto 12px;
+  max-width: 11ch;
+  font-size: clamp(2.1rem, 4vw, 3.4rem);
+  line-height: 1;
+  text-align: center;
+}
+
+.subtitle,
+.selection-note,
+.save-hint,
+.choice-card p,
+.info-pill span,
+.explanation-text,
+.footer,
+.legal-box p,
+.instagram-copy p,
+.score-box span {
+  color: var(--muted);
+}
+
+.subtitle {
+  margin: 0 auto 18px;
+  max-width: 42ch;
+  line-height: 1.55;
+  text-align: center;
+}
+
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.hero-meta span,
+.choice-count {
+  padding: 9px 13px;
+  border-radius: 999px;
+  background: var(--surface-soft);
+  border: 1px solid var(--line);
+  font-weight: 600;
+}
+
+.hero-main {
+  text-align: center;
+}
+
+.hero-cta-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 18px;
+}
+
+.hero-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 15px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--text);
+  font-weight: 700;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.hero-link:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+  border-color: var(--line-strong);
+}
+
+.hero-cta-row .hero-link {
+  width: auto;
+  min-width: 168px;
+}
+
+.legal-box {
+  max-width: 620px;
+  margin: 0 auto;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  background: #fcfbf9;
+  text-align: left;
+}
+
+.legal-box strong {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.legal-box p {
+  margin: 0;
+  line-height: 1.6;
+}
+
+.panel-head {
+  margin-bottom: 12px;
+}
+
+.start-summary {
+  margin: 0 0 16px;
+  padding: 14px 15px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface-soft);
+}
+
+.start-summary strong {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.start-summary p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.mode-group {
+  margin-bottom: 16px;
+}
+
+.mode-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.mode-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.mode-button {
+  min-height: 44px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--text);
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    border-color 0.18s ease,
+    background-color 0.18s ease;
+}
+
+.mode-button:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-soft);
+  border-color: var(--line-strong);
+}
+
+.mode-button.active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #ffffff;
+}
+
+.compact-note {
+  margin: 10px 0 0;
+  color: var(--muted);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.start-panel {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.panel-head h2,
+.section-head h2,
+.quiz-card h2,
+.instagram-card h2,
+.choice-card h3 {
+  margin: 0;
+}
+
+.selection-note {
+  margin: 8px 0 0;
+  line-height: 1.5;
+}
+
+.setting-group {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.setting-group label {
+  font-weight: 600;
+}
+
+.app-select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--surface-solid);
+  color: var(--text);
+}
+
+.check-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 14px 0;
+}
+
+.check-row input {
+  accent-color: var(--primary);
+}
+
+.check-row.subtle {
+  color: var(--muted);
+}
+
+.primary-button,
+.secondary-button,
+.answer-button,
+.instagram-link,
+.ghost-button,
+.choice-card {
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease,
+    background-color 0.18s ease,
+    border-color 0.18s ease;
+}
+
+.primary-button,
+.secondary-button,
+.instagram-link {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.primary-button {
+  border: none;
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.secondary-button {
+  margin-top: 10px;
+  border: 1px solid var(--line);
+  background: #f7f4ef;
+  color: var(--text);
+}
+
+.ghost-button {
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.86);
+  color: var(--text);
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.primary-button:hover:not(:disabled),
+.secondary-button:hover,
+.answer-button:hover:not(:disabled),
+.instagram-link:hover,
+.ghost-button:hover,
+.choice-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(19, 27, 35, 0.1);
+}
+
+.primary-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.save-hint {
+  min-height: 1.4em;
+  margin-bottom: 0;
+  font-size: 0.94rem;
+}
+
+.module-section,
+.topic-section,
+.level-section,
+.quiz-section,
+.instagram-wrap {
+  margin-bottom: 18px;
+}
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.module-grid,
+.topic-grid,
+.level-grid {
+  display: grid;
+  gap: 16px;
+}
+
+.module-grid,
+.topic-grid {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.level-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.topic-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.choice-card {
+  width: 100%;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow-soft);
+  text-align: left;
+  cursor: pointer;
+}
+
+.choice-card.selected {
+  border-color: rgba(31, 52, 71, 0.22);
+  background: linear-gradient(180deg, #ffffff 0%, #f7f9fb 100%);
+}
+
+.choice-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.choice-status {
+  padding: 6px 10px;
+  border-radius: 999px;
+  background: #f2efea;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.choice-card.selected .choice-status {
+  background: #edf2f7;
+  color: var(--primary);
+}
+
+.choice-card h3 {
+  margin-bottom: 8px;
+  font-size: 1.03rem;
+}
+
+.choice-card p {
+  margin: 0 0 12px;
+  line-height: 1.45;
+  font-size: 0.96rem;
+}
+
+.level-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.module-level.basis {
+  background: #f1ece5;
+  color: #6b5840;
+}
+
+.module-level.mittel {
+  background: #eaf0f4;
+  color: #1f3447;
+}
+
+.module-level.schwer {
+  background: #f5ecec;
+  color: #8c4a4a;
+}
+
+.score-box {
+  min-width: 118px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  background: #f7f4ef;
+  text-align: center;
+}
+
+.score-box strong {
+  font-size: 1.4rem;
+}
+
+.progress-meta {
+  margin: 18px 0 10px;
+  color: var(--muted);
+}
+
+.badge-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.topic-badge {
+  background: #eef2f6;
+  color: var(--primary);
+}
+
+.difficulty-badge {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.progress-track {
+  height: 10px;
+  border-radius: 999px;
+  overflow: hidden;
+  background: #ece7de;
+}
+
+.progress-bar {
+  width: 0;
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--primary), #35526d);
+  transition: width 0.28s ease;
+}
+
+.question-block {
+  margin-top: 22px;
+}
+
+.question-block h3 {
+  margin: 0 0 16px;
+  font-size: clamp(1.18rem, 2vw, 1.58rem);
+  line-height: 1.55;
+}
+
+.answer-list {
+  display: grid;
+  gap: 12px;
+}
+
+.answer-button {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  width: 100%;
+  padding: 15px 16px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface-solid);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.answer-letter {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border-radius: 50%;
+  background: #f2ede6;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.answer-button.correct {
+  border-color: rgba(43, 133, 88, 0.34);
+  background: var(--success-soft);
+}
+
+.answer-button.incorrect {
+  border-color: rgba(191, 83, 83, 0.3);
+  background: var(--error-soft);
+}
+
+.answer-button.revealed {
+  opacity: 0.97;
+}
+
+.feedback-box {
+  margin-top: 20px;
+  padding: 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  animation: feedbackReveal 0.25s ease;
+}
+
+.feedback-box.success {
+  background: var(--success-soft);
+  border-color: rgba(43, 133, 88, 0.26);
+}
+
+.feedback-box.error {
+  background: var(--error-soft);
+  border-color: rgba(191, 83, 83, 0.22);
+}
+
+.feedback-box h4,
+.feedback-box p {
+  margin: 0;
+}
+
+.feedback-box p + p {
+  margin-top: 10px;
+}
+
+.instagram-card {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 18px;
+  align-items: stretch;
+}
+
+.instagram-copy h2 {
+  margin-bottom: 10px;
+}
+
+.instagram-copy p {
+  margin: 0 0 18px;
+  line-height: 1.6;
+  max-width: 52ch;
+}
+
+.instagram-link {
+  max-width: 220px;
+  border: none;
+  background: var(--primary);
+  color: #ffffff;
+}
+
+.instagram-privacy {
+  display: grid;
+  gap: 12px;
+  align-content: center;
+  min-height: 260px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface-soft);
+}
+
+.instagram-privacy p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.instagram-privacy a {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.instagram-load-button {
+  width: fit-content;
+  padding: 11px 14px;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--primary);
+  color: #ffffff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.instagram-photo {
+  width: 100%;
+  min-height: 260px;
+  object-fit: cover;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow-soft);
+}
+
+.instagram-mini {
+  width: fit-content;
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.check-row.consent-row {
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  background: var(--surface-soft);
+}
+
+.footer {
+  padding: 6px 0 4px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+.creator-signature {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 8px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.creator-signature a {
+  color: var(--primary);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.creator-signature a:hover {
+  text-decoration: underline;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.fade-in {
+  animation: fadeInUp 0.6s ease both;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes feedbackReveal {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 1080px) {
+  .hero,
+  .module-grid,
+  .topic-grid,
+  .level-grid,
+  .instagram-card {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 920px) {
+  .quiz-topbar,
+  .progress-meta,
+  .quiz-actions,
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .primary-button,
+  .secondary-button,
+  .instagram-link {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .page-shell {
+    width: min(100% - 18px, 1160px);
+    padding-top: 14px;
+  }
+
+  .hero-main,
+  .start-panel,
+  .choice-card,
+  .level-card,
+  .quiz-card,
+  .instagram-card {
+    padding: 22px;
+  }
+
+  .hero-main h1 {
+    font-size: 1.9rem;
+  }
+}
+    </style>
+  </head>
+  <body>
+    <div class="site-bg" aria-hidden="true"></div>
+    <div class="page-shell">
+      <main id="top">
+        <section class="hero fade-in">
+          <div class="hero-main card">
+            <span class="eyebrow">Wayand Meister Lernplattform</span>
+            <h1>Meister Teil 3 und 4 üben</h1>
+            <p class="subtitle">
+              Klare Auswahl, direkte Fragen und ein einfacher Start für die
+              Meistervorbereitung.
+            </p>
+
+            <div class="hero-cta-row">
+              <button id="jumpStartButton" class="primary-button hero-link" type="button">Jetzt starten</button>
+              <button id="jumpModuleButton" class="hero-link" type="button">Zur Auswahl</button>
+            </div>
+
+            <div class="hero-meta">
+              <span id="totalQuestionsValue">0 Fragen aktiv</span>
+              <span id="selectedModulesValue" class="hidden">0 Module aktiv</span>
+              <span id="selectedTopicsValue" class="hidden">0 Felder aktiv</span>
+            </div>
+
+            <div class="legal-box">
+              <strong>Hinweis zur Übungsplattform</strong>
+              <p>
+                Dies ist eine eigenständige, nicht offizielle Übungsplattform
+                zur Prüfungsvorbereitung. Sie steht in keiner Verbindung zu
+                IHK, HWK oder einer Prüfungsstelle. Es werden keine
+                Originalprüfungsfragen verwendet. Die Inhalte dienen nur dem
+                Training und ersetzen keine verbindliche Prüfungs-, Rechts-
+                oder Ausbildungsberatung.
+              </p>
+            </div>
+          </div>
+
+          <aside id="startArea" class="start-panel card">
+            <div class="panel-head">
+              <h2>Training starten</h2>
+              <p id="selectionNote" class="selection-note">
+                Alle Module sind aktiv.
+              </p>
+            </div>
+
+            <div class="start-summary">
+              <strong>Schnellstart</strong>
+              <p>Modus wählen, Fragenanzahl festlegen und direkt loslegen. Die Feinauswahl kommt direkt darunter.</p>
+            </div>
+
+            <div class="mode-group">
+              <label>Schnellauswahl</label>
+              <div class="mode-buttons">
+                <button id="modeAllButton" class="mode-button active" type="button">Alles</button>
+                <button id="modeLawButton" class="mode-button" type="button">Recht</button>
+                <button id="modePart3Button" class="mode-button" type="button">Teil 3</button>
+                <button id="modePart4Button" class="mode-button" type="button">Teil 4 / AdA</button>
+                <button id="modeBookingButton" class="mode-button" type="button">Buchungssätze</button>
+              </div>
+              <p class="compact-note">
+                Unten können Sie danach noch feiner auswählen, welche Felder Sie heute trainieren möchten.
+              </p>
+            </div>
+
+            <div class="setting-group">
+              <label for="questionCountSelect">Fragenanzahl</label>
+              <select id="questionCountSelect" class="app-select">
+                <option value="10">10 Fragen</option>
+                <option value="20" selected>20 Fragen</option>
+                <option value="30">30 Fragen</option>
+                <option value="40">40 Fragen</option>
+                <option value="all">Alle Fragen</option>
+              </select>
+            </div>
+
+            <label class="check-row subtle" for="shuffleCheckbox">
+              <input id="shuffleCheckbox" type="checkbox" />
+              <span>Themenfolge mischen</span>
+            </label>
+
+            <label class="check-row subtle" for="shuffleAnswersCheckbox">
+              <input id="shuffleAnswersCheckbox" type="checkbox" checked />
+              <span>Antworten mischen</span>
+            </label>
+
+            <label class="check-row consent-row" for="consentCheckbox">
+              <input id="consentCheckbox" type="checkbox" checked />
+              <span>Hinweis gelesen und Training kann gestartet werden</span>
+            </label>
+
+            <button id="startButton" class="primary-button" disabled>
+              Training starten
+            </button>
+            <button id="restartSavedButton" class="secondary-button hidden">
+              Neu beginnen
+            </button>
+            <p id="saveHint" class="save-hint" aria-live="polite"></p>
+          </aside>
+        </section>
+
+        <section id="moduleSection" class="module-section fade-in">
+          <div class="section-head">
+            <div>
+              <p class="section-label">Module</p>
+              <h2>Module auswählen</h2>
+            </div>
+            <button id="selectAllModulesButton" class="ghost-button" type="button">
+              Alle Module
+            </button>
+          </div>
+
+          <div id="moduleSelection" class="module-grid"></div>
+        </section>
+
+        <section id="topicSection" class="topic-section fade-in">
+          <div class="section-head">
+            <div>
+              <p class="section-label">Handlungsfelder</p>
+              <h2>Felder eingrenzen</h2>
+            </div>
+            <div class="toolbar">
+              <button id="selectAllTopicsButton" class="ghost-button" type="button">
+                Alle Felder
+              </button>
+              <button id="clearTopicsButton" class="ghost-button" type="button">
+                Alle abwählen
+              </button>
+            </div>
+          </div>
+
+          <div id="topicSelection" class="topic-grid"></div>
+        </section>
+
+        <section class="level-section fade-in">
+          <div class="section-head">
+            <div>
+              <p class="section-label">Schwierigkeit</p>
+              <h2>Aktiver Fragenpool</h2>
+            </div>
+          </div>
+
+          <div class="level-grid">
+            <article class="card level-card">
+              <span class="module-level basis">Leicht</span>
+              <strong id="leichtCountValue">0 Fragen</strong>
+            </article>
+            <article class="card level-card">
+              <span class="module-level mittel">Mittel</span>
+              <strong id="mittelCountValue">0 Fragen</strong>
+            </article>
+            <article class="card level-card">
+              <span class="module-level schwer">Schwer</span>
+              <strong id="schwerCountValue">0 Fragen</strong>
+            </article>
+          </div>
+        </section>
+
+        <section id="quizSection" class="quiz-section hidden fade-in" aria-live="polite">
+          <div class="card quiz-card">
+            <div class="quiz-topbar">
+              <div>
+                <p class="section-label">Trainer</p>
+                <h2>Prüfungsrunde</h2>
+              </div>
+              <div class="score-box">
+                <span>Punktestand</span>
+                <strong id="scoreValue">0</strong>
+              </div>
+            </div>
+
+            <div class="progress-meta">
+              <span id="questionCounter">Frage 1 von 1</span>
+              <div class="badge-row">
+                <span id="moduleBadge" class="module-badge">Modul</span>
+                <span id="topicBadge" class="topic-badge">Thema</span>
+                <span id="difficultyBadge" class="difficulty-badge">Leicht</span>
+              </div>
+            </div>
+
+            <div class="progress-track" aria-hidden="true">
+              <div id="progressBar" class="progress-bar"></div>
+            </div>
+
+            <div class="question-block">
+              <h3 id="questionText">Frage wird geladen...</h3>
+              <div id="answerList" class="answer-list"></div>
+            </div>
+
+            <div id="feedbackBox" class="feedback-box hidden">
+              <h4 id="feedbackTitle">Auswertung</h4>
+              <p id="feedbackText"></p>
+              <p id="explanationText" class="explanation-text"></p>
+            </div>
+
+            <div class="quiz-actions">
+              <button id="nextButton" class="primary-button" disabled>
+                Nächste Frage
+              </button>
+              <button id="restartButton" class="secondary-button">
+                Neu starten
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section class="instagram-wrap fade-in">
+          <div class="card instagram-card">
+            <div class="instagram-copy">
+              <p class="section-label">Wayand</p>
+              <h2>Ausbildung und echte Baustellen</h2>
+              <p>
+                Die Lernplattform soll beim Üben helfen und gleichzeitig zeigen,
+                wofür Wayand als Malerfachbetrieb steht: saubere Arbeit,
+                Ausbildung und Praxisnähe.
+              </p>
+              <a
+                class="instagram-link"
+                href="https://www.instagram.com/malerfachbetrieb.wayand/"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Instagram ansehen
+              </a>
+            </div>
+
+            <div id="instagramPrivacyBox" class="instagram-privacy">
+              <strong>Externes Instagram-Bild</strong>
+              <p>
+                Das Bild wird erst nach Zustimmung von Imgur geladen. Dabei
+                können personenbezogene Daten wie IP-Adresse und Browserdaten
+                an den Anbieter übertragen werden.
+              </p>
+              <p>
+                Mehr dazu in der
+                <a
+                  href="https://www.malerfachbetrieb-wayand.de/datenschutz#h.z14t3caecvdy"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  Datenschutzerklärung
+                </a>.
+              </p>
+              <button id="loadInstagramImageButton" class="instagram-load-button" type="button">
+                Bild laden
+              </button>
+            </div>
+
+            <img
+              id="instagramImage"
+              class="instagram-photo hidden"
+              data-src="https://i.imgur.com/F3tZBfG.jpeg"
+              alt="Wayand Instagram Vorschau"
+            />
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>
+          Eigenständige Übungsplattform von Wayand. Nicht offiziell, keine
+          Originalprüfungsfragen, keine Rechtsberatung.
+        </p>
+        <p class="creator-signature">
+          Umsetzung
+          <a href="https://www.instagram.com/jones_wyd/" target="_blank" rel="noreferrer">
+            @jones_wyd
+          </a>
+        </p>
+      </footer>
+    </div>
+
+    <script>
+const STORAGE_KEY = "wayand-meister-teil3-4-progress";
+const EXTERNAL_IMAGE_CONSENT_KEY = "wayand-external-image-consent";
+
+const moduleMeta = {
+  "Meister Teil 3": {
+    description: "Betriebswirtschaftliche, kaufmännische und rechtliche Inhalte.",
+    topics: [
+      "Wettbewerbsfähigkeit beurteilen",
+      "Gründung und Übernahme planen",
+      "Unternehmensführung entwickeln",
+      "Buchungssätze bilden"
+    ]
+  },
+  "Meister Teil 4": {
+    description: "Berufs- und arbeitspädagogische Inhalte nach AEVO-Struktur.",
+    topics: [
+      "Ausbildung planen",
+      "Ausbildung vorbereiten",
+      "Ausbildung durchführen",
+      "Ausbildung abschließen"
+    ]
+  }
+};
+
+const topicMeta = {
+  "Wettbewerbsfähigkeit beurteilen": {
+    module: "Meister Teil 3",
+    description: "Markt, Wettbewerb, Rechtsform und unternehmerische Risiken."
+  },
+  "Gründung und Übernahme planen": {
+    module: "Meister Teil 3",
+    description: "Gründung, Finanzierung, Übernahme und kaufmännische Vorbereitung."
+  },
+  "Unternehmensführung entwickeln": {
+    module: "Meister Teil 3",
+    description: "Kalkulation, Verträge, Liquidität und betriebliche Führung."
+  },
+  "Buchungssätze bilden": {
+    module: "Meister Teil 3",
+    description: "Einfache Buchungssätze, Kontenwirkung und typische Zahlungsfälle."
+  },
+  "Ausbildung planen": {
+    module: "Meister Teil 4",
+    description: "Ausbildungsvoraussetzungen prüfen und Ausbildung sinnvoll planen."
+  },
+  "Ausbildung vorbereiten": {
+    module: "Meister Teil 4",
+    description: "Ausbildung vorbereiten sowie Auswahl und Einstellung begleiten."
+  },
+  "Ausbildung durchführen": {
+    module: "Meister Teil 4",
+    description: "Unterweisen, motivieren, Rückmeldung geben und Lernfortschritt sichern."
+  },
+  "Ausbildung abschließen": {
+    module: "Meister Teil 4",
+    description: "Prüfungsphase, Nachweise, Reflexion und Ausbildungsende."
+  }
+};
+
+const moduleOrder = Object.keys(moduleMeta);
+const topicOrder = moduleOrder.flatMap((moduleName) => moduleMeta[moduleName].topics);
+
+const questionBank = {
+  "Wettbewerbsfähigkeit beurteilen": [
+    {
+      id: 1,
+      module: "Meister Teil 3",
+      topic: "Wettbewerbsfähigkeit beurteilen",
+      difficulty: "Leicht",
+      question:
+        "Ein Malerbetrieb stellt fest, dass in einem Stadtteil immer mehr Angebote verloren gehen. Der Inhaber will nicht sofort den Preis senken, sondern zuerst die eigene Ausgangslage sauber beurteilen. Welche Maßnahme ist als erster Schritt am ehesten sinnvoll?",
+      options: [
+        "Leistungsangebot, Zielgruppen, Preise und Marktchancen systematisch auswerten.",
+        "Ohne weitere Prüfung alle Stundenverrechnungssätze absenken.",
+        "Laufende Stammkundenaufträge zugunsten neuer Anfragen ablehnen.",
+        "Werbung vorläufig ganz einstellen, um Kosten zu sparen."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Vor jeder Reaktion im Wettbewerb steht die Analyse der eigenen Position. Eine vorschnelle Preissenkung ist eine typische Prüfungsfalle."
+    },
+    {
+      id: 2,
+      module: "Meister Teil 3",
+      topic: "Wettbewerbsfähigkeit beurteilen",
+      difficulty: "Mittel",
+      question:
+        "Zwei Meister wollen gemeinsam einen Betrieb gründen. Sie möchten mit wenig Formalaufwand starten, persönlich mitentscheiden und akzeptieren zunächst auch eine persönliche Haftung. Ein kaufmännisch eingerichteter Geschäftsbetrieb liegt noch nicht vor. Welche Rechtsform passt am ehesten?",
+      options: [
+        "GbR, weil sie bei zwei Gründern ohne Stammkapital möglich ist.",
+        "GmbH, weil dort ohne Mindestkapital und ohne notarielle Schritte gegründet werden kann.",
+        "OHG, weil jede gemeinsame gewerbliche Tätigkeit automatisch eine OHG ist.",
+        "UG, weil sie ohne Eintragung und ohne laufende Pflichten entsteht."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Die GbR passt zu einer einfachen gemeinsamen Gründung. Die anderen Antworten überzeichnen oder verkennen die Voraussetzungen."
+    },
+    {
+      id: 3,
+      module: "Meister Teil 3",
+      topic: "Wettbewerbsfähigkeit beurteilen",
+      difficulty: "Mittel",
+      question:
+        "Ein Betrieb wirbt ausschließlich mit dem Satz 'immer der billigste Anbieter'. Über Zielgruppe, Qualität, Reklamationsquote und Ertrag liegen keine Auswertungen vor. Welche Bewertung trifft am ehesten zu?",
+      options: [
+        "Das ist ausreichend, weil im Wettbewerb allein der niedrigste Preis entscheidend ist.",
+        "Das ist zu kurz gedacht, weil Wettbewerbsfähigkeit nicht nur über den Preis bestimmt wird.",
+        "Das ist nur bei Industriebetrieben problematisch.",
+        "Das ist richtig, solange genug Fahrzeuge vorhanden sind."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Wettbewerbsfähigkeit umfasst auch Qualität, Zielgruppe, Organisation und Ertrag. Nur auf billig zu setzen ist typisch prüfungsnah falsch."
+    },
+    {
+      id: 4,
+      module: "Meister Teil 3",
+      topic: "Wettbewerbsfähigkeit beurteilen",
+      difficulty: "Schwer",
+      question:
+        "Ein Inhaber hält seinen Betrieb für ausreichend abgesichert, weil der Auftragsbestand für die nächsten vier Monate voll ist. Kennzahlen zu Ertrag, Forderungslaufzeiten oder Kundenstruktur wertet er nicht aus. Welche Aussage passt am ehesten?",
+      options: [
+        "Die gute Auslastung beweist bereits die nachhaltige Wettbewerbsfähigkeit des Betriebs.",
+        "Das ist zu kurz gegriffen, weil Wettbewerbsfähigkeit auch von Wirtschaftlichkeit, Risiken und Organisation abhängt.",
+        "Kennzahlen sind nur für Kapitalgesellschaften von Bedeutung.",
+        "Die Auswertung betrieblicher Risiken ist erst ab 20 Beschäftigten erforderlich."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Volle Auftragsbücher ersetzen keine betriebswirtschaftliche Beurteilung. Genau diese Verwechslung ist prüfungsnah."
+    },
+    {
+      id: 5,
+      module: "Meister Teil 3",
+      topic: "Wettbewerbsfähigkeit beurteilen",
+      difficulty: "Leicht",
+      question:
+        "Ein Malerbetrieb verliert mehrere Angebote an Wettbewerber und vergleicht daraufhin nur die Endpreise der Konkurrenz. Die eigene Kostenstruktur und das eigene Leistungsprofil werden nicht geprüft. Welche Bewertung ist am ehesten zutreffend?",
+      options: [
+        "Das reicht aus, weil im Wettbewerb allein die Endpreise anderer Betriebe entscheidend sind.",
+        "Das greift zu kurz, weil ohne Kenntnis der eigenen Kosten und Leistungen keine tragfähige Beurteilung möglich ist.",
+        "Das ist nur im ersten Jahr nach der Gründung problematisch.",
+        "Das ist unkritisch, wenn der Betrieb regional bekannt ist."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Der Fremdpreisvergleich allein ersetzt keine eigene Analyse. Das ist ein klassischer Teil-3-Gedanke."
+    },
+    {
+      id: 6,
+      module: "Meister Teil 3",
+      topic: "Wettbewerbsfähigkeit beurteilen",
+      difficulty: "Mittel",
+      question:
+        "Der Inhaber freut sich über steigende Umsätze, stellt aber zugleich fest, dass der Jahresüberschuss sinkt. Er hält eine weitere Auswertung für entbehrlich, weil mehr Umsatz immer ein gutes Zeichen sei. Welche Aussage ist am ehesten richtig?",
+      options: [
+        "Steigende Umsätze beweisen automatisch eine gesunde Wettbewerbsposition.",
+        "Das ist nur dann problematisch, wenn gleichzeitig weniger Personal eingesetzt wird.",
+        "Das ist zu einfach gedacht, weil auch Kostenentwicklung und Ertragslage beurteilt werden müssen.",
+        "Das betrifft nur steuerliche, nicht aber betriebliche Fragen."
+      ],
+      correctIndex: 2,
+      explanation:
+        "Richtig ist Antwort C. Umsatz und Ertrag dürfen nicht gleichgesetzt werden. Diese Unterscheidung ist prüfungsrelevant."
+    },
+    {
+      id: 7,
+      module: "Meister Teil 3",
+      topic: "Wettbewerbsfähigkeit beurteilen",
+      difficulty: "Schwer",
+      question:
+        "Ein Betrieb erzielt rund 70 Prozent seines Umsatzes mit einem einzigen Großkunden. Der Inhaber wertet das ausschließlich als Beleg für eine starke Marktstellung. Welche Bewertung ist am ehesten zutreffend?",
+      options: [
+        "Die Abhängigkeit ist unkritisch, weil ein hoher Umsatzanteil immer für Sicherheit spricht.",
+        "Das ist nur für die Buchhaltung relevant, nicht für die Wettbewerbsbeurteilung.",
+        "Die Situation ist unproblematisch, solange zusätzlich Social Media genutzt wird.",
+        "Es besteht ein Konzentrationsrisiko, weil der Ausfall eines Großkunden die Wettbewerbsfähigkeit erheblich beeinträchtigen kann."
+      ],
+      correctIndex: 3,
+      explanation:
+        "Richtig ist Antwort D. Eine einseitige Kundenstruktur kann wirtschaftlich gefährlich sein. Solche Abhängigkeiten werden in Fallfragen gern versteckt."
+    },
+    {
+      id: 54,
+      module: "Meister Teil 3",
+      topic: "Gründung und Übernahme planen",
+      difficulty: "Leicht",
+      question:
+        "Auf einer Hausmesse bestellt ein sechsjähriges Kind ohne Begleitung seiner Eltern begeistert ein teures Farbspritzgerät für den 'späteren eigenen Betrieb'. Der Verkäufer möchte sich sofort auf den Kaufvertrag berufen. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Der Vertrag ist im Regelfall unwirksam, weil Kinder vor Vollendung des siebenten Lebensjahres geschäftsunfähig sind.",
+        "Der Vertrag ist wirksam, weil jeder Kaufvertrag mit Bezahlung zustande kommt.",
+        "Der Vertrag ist automatisch wirksam, wenn die Ware im Handwerk verwendet werden soll.",
+        "Der Vertrag ist nur dann unwirksam, wenn der Preis besonders hoch ist."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Wer das siebente Lebensjahr noch nicht vollendet hat, ist grundsätzlich geschäftsunfähig. Dessen Willenserklärung ist regelmäßig nichtig."
+    },
+    {
+      id: 55,
+      module: "Meister Teil 3",
+      topic: "Gründung und Übernahme planen",
+      difficulty: "Mittel",
+      question:
+        "Ein 17-Jähriger erhält von einem Betrieb unentgeltlich einen gebrauchten Werkzeugkoffer für den Start in die Ausbildung. Er muss nichts bezahlen und keine weiteren Verpflichtungen übernehmen. Welche Aussage trifft am ehesten zu?",
+      options: [
+        "Der Vertrag ist ohne Mitwirkung der Eltern stets unwirksam.",
+        "Der Vertrag kann auch ohne Einwilligung wirksam sein, wenn der Minderjährige lediglich einen rechtlichen Vorteil erlangt.",
+        "Schenkungen an Minderjährige sind nur über das Familiengericht möglich.",
+        "Der Vertrag wird erst mit Vollendung des 18. Lebensjahres wirksam."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Erlangt der Minderjährige nur einen rechtlichen Vorteil, braucht er dafür grundsätzlich keine Einwilligung der gesetzlichen Vertreter."
+    },
+    {
+      id: 56,
+      module: "Meister Teil 3",
+      topic: "Gründung und Übernahme planen",
+      difficulty: "Schwer",
+      question:
+        "Ein 17-jähriger angehender Geselle unterschreibt ohne Zustimmung seiner Eltern einen Ratenkauf über ein hochwertiges Lackiergerät. Der Händler will sofort auf Vertragserfüllung bestehen. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Der Vertrag ist von Anfang an uneingeschränkt wirksam, weil der Minderjährige fast volljährig ist.",
+        "Der Vertrag ist nichtig, weil Minderjährige niemals Verträge über Werkzeuge schließen dürfen.",
+        "Die Wirksamkeit hängt von der Genehmigung der gesetzlichen Vertreter ab.",
+        "Der Vertrag wird automatisch wirksam, sobald die erste Rate gezahlt ist."
+      ],
+      correctIndex: 2,
+      explanation:
+        "Richtig ist Antwort C. Bei einem Vertrag ohne erforderliche Einwilligung hängt die Wirksamkeit regelmäßig von der späteren Genehmigung ab. Genau das ist die klassische Schwebe-Falle."
+    },
+    {
+      id: 57,
+      module: "Meister Teil 3",
+      topic: "Gründung und Übernahme planen",
+      difficulty: "Schwer",
+      question:
+        "Ein Lieferant erfährt erst nach Vertragsschluss, dass der Besteller 17 Jahre alt ist und die Zustimmung der Eltern fehlt. Eine Genehmigung liegt noch nicht vor. Der Lieferant möchte sich inzwischen wieder vom Vertrag lösen. Welche Aussage ist am ehesten richtig?",
+      options: [
+        "Bis zur Genehmigung kann der andere Teil den Vertrag grundsätzlich widerrufen.",
+        "Der Lieferant ist in jedem Fall endgültig an den Vertrag gebunden.",
+        "Ein Widerruf ist erst nach Ablauf von sechs Monaten möglich.",
+        "Der Lieferant kann nur dann widerrufen, wenn bereits geliefert wurde."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Solange die Genehmigung noch aussteht, steht dem anderen Teil grundsätzlich ein Widerrufsrecht zu. Diese Folge wird in Prüfungen gern übersehen."
+    },
+    {
+      id: 58,
+      module: "Meister Teil 3",
+      topic: "Gründung und Übernahme planen",
+      difficulty: "Mittel",
+      question:
+        "Ein 17-jähriger Auszubildender kauft im Fachhandel Arbeitskleidung für 90 Euro und bezahlt den vollen Preis sofort mit Geld, das ihm seine Eltern zur freien Verfügung überlassen haben. Welche Bewertung trifft am ehesten zu?",
+      options: [
+        "Der Vertrag ist allein wegen der Minderjährigkeit immer unwirksam.",
+        "Der Vertrag kann wirksam sein, wenn der Minderjährige die vertragsmäßige Leistung mit eigenen, frei überlassenen Mitteln bewirkt.",
+        "Der Vertrag ist nur wirksam, wenn der Händler eine Garantie ausstellt.",
+        "Der Vertrag ist nur wirksam, wenn beide Eltern im Laden anwesend sind."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Das ist die klassische Konstellation des sogenannten Taschengeldparagraphen. Entscheidend ist die vollständige Bewirkung mit frei überlassenen Mitteln."
+    },
+    {
+      id: 60,
+      module: "Meister Teil 3",
+      topic: "Unternehmensführung entwickeln",
+      difficulty: "Mittel",
+      question:
+        "Ein Betrieb bestellt bei einem Hersteller passgenaue, erst noch anzufertigende Werkstattschränke, die nach Fertigstellung geliefert werden sollen. Der Inhaber fragt, welcher Vertragstyp hier am ehesten einschlägig ist. Welche Aussage passt am ehesten?",
+      options: [
+        "Es liegt immer ein bloßer Dienstvertrag vor, weil Arbeit eingesetzt wird.",
+        "Es handelt sich im Grundsatz um einen Werklieferungsvertrag, auf den Kaufrecht Anwendung findet.",
+        "Ein solcher Vertrag ist rechtlich nur als Mietvertrag einzuordnen.",
+        "Ein Vertrag über herzustellende bewegliche Sachen ist gesetzlich nicht geregelt."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Bei der Lieferung herzustellender beweglicher Sachen ist der Werklieferungsvertrag ein klassischer Prüfungsfall. Gesetzlich greifen dabei im Grundsatz die kaufrechtlichen Vorschriften."
+    },
+    {
+      id: 61,
+      module: "Meister Teil 3",
+      topic: "Unternehmensführung entwickeln",
+      difficulty: "Mittel",
+      question:
+        "Ein Malerbetrieb schickt einem Kunden ein schriftliches Angebot über Fassadenarbeiten. Der Kunde antwortet: 'Einverstanden, aber bitte mit anderer Ausführungsfrist und geändertem Leistungsumfang.' Der Inhaber meint, damit sei das ursprüngliche Angebot einfach angenommen worden. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Das ist im Regelfall eine normale Annahme des ursprünglichen Angebots.",
+        "Die Antwort gilt regelmäßig als Ablehnung verbunden mit einem neuen Antrag.",
+        "Eine Vertragsänderung ist erst nach Rechnungsstellung möglich.",
+        "Jede schriftliche Antwort des Kunden macht den Vertrag automatisch wirksam."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Eine Annahme mit Änderungen ist rechtlich gerade keine unveränderte Annahme. Diese Falle wird im Vertragsrecht häufig geprüft."
+    },
+    {
+      id: 62,
+      module: "Meister Teil 3",
+      topic: "Unternehmensführung entwickeln",
+      difficulty: "Schwer",
+      question:
+        "Ein Malerbetrieb hat die vereinbarten Innenarbeiten fertiggestellt und stellt sofort die gesamte Vergütung fällig, obwohl eine Abnahme noch nicht erfolgt ist und kein besonderer Ausnahmefall vorliegt. Welche Aussage ist am ehesten richtig?",
+      options: [
+        "Beim Werkvertrag wird die Vergütung im Grundsatz bereits mit Arbeitsbeginn fällig.",
+        "Beim Werkvertrag ist die Vergütung im Grundsatz erst bei Abnahme zu entrichten.",
+        "Die Vergütung wird immer erst nach Ablauf der Gewährleistungsfrist fällig.",
+        "Die Fälligkeit hängt ausschließlich davon ab, ob Material verwendet wurde."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Beim Werkvertrag ist die Abnahme ein zentraler Anknüpfungspunkt für die Fälligkeit der Vergütung. Genau diese Verknüpfung ist prüfungsrelevant."
+    },
+    {
+      id: 63,
+      module: "Meister Teil 3",
+      topic: "Unternehmensführung entwickeln",
+      difficulty: "Schwer",
+      question:
+        "Nach Abschluss einer Lackierarbeit entdeckt der Kunde Mängel und beauftragt ohne jede Fristsetzung sofort einen anderen Betrieb mit der Nacharbeit. Die Kosten will er anschließend dem ersten Unternehmer voll in Rechnung stellen. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Das ist ohne Weiteres richtig, weil bei jedem Mangel sofort ein Drittunternehmen beauftragt werden darf.",
+        "Der Besteller muss dem Unternehmer regelmäßig zunächst Gelegenheit zur Nacherfüllung geben.",
+        "Bei Werkverträgen gibt es keine Nacherfüllung.",
+        "Die Einschaltung eines anderen Betriebs ist immer nur bei Kaufverträgen ausgeschlossen."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Auch beim Werkvertrag steht regelmäßig zunächst die Nacherfüllung im Raum. Sofortige Ersatzvornahme ohne vorherige Chance zur Mangelbeseitigung ist eine typische Prüfungsfalle."
+    },
+    {
+      id: 64,
+      module: "Meister Teil 3",
+      topic: "Unternehmensführung entwickeln",
+      difficulty: "Mittel",
+      question:
+        "Ein Betrieb kauft ein neues Farbspritzgerät. Nach 18 Monaten zeigt sich ein Sachmangel. Der Verkäufer behauptet, Ansprüche seien allein wegen des Zeitablaufs schon ausgeschlossen. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Bei beweglichen Sachen sind gesetzliche Mängelansprüche im Regelfall nicht schon nach 18 Monaten verjährt.",
+        "Ansprüche wegen Mängeln verjähren bei beweglichen Sachen grundsätzlich bereits nach sechs Monaten.",
+        "Nach einem Jahr bestehen gesetzliche Mängelrechte nur noch bei Bauwerken.",
+        "Ob Ansprüche bestehen, richtet sich nur nach einer freiwilligen Garantie."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Die gesetzliche Verjährung für Mängelansprüche bei beweglichen Sachen liegt im Regelfall bei zwei Jahren. Ein bloßer Verweis auf den Zeitablauf nach 18 Monaten greift also zu kurz."
+    },
+    {
+      id: 65,
+      module: "Meister Teil 3",
+      topic: "Unternehmensführung entwickeln",
+      difficulty: "Mittel",
+      question:
+        "Ein Hersteller gibt für ein Gerät eine Garantie von einem Jahr. Nach 13 Monaten zeigt sich ein Mangel, und der Verkäufer erklärt sofort, damit seien auch alle gesetzlichen Ansprüche erledigt. Welche Aussage passt am ehesten?",
+      options: [
+        "Das ist richtig, weil mit Ablauf der Garantie automatisch auch die gesetzliche Mängelhaftung endet.",
+        "Das ist falsch, weil Garantie und gesetzliche Mängelrechte voneinander zu unterscheiden sind.",
+        "Gesetzliche Mängelrechte bestehen nur dann, wenn ausdrücklich keine Garantie gegeben wurde.",
+        "Nach Ablauf einer Garantie kann nur noch der Hersteller, nicht aber der Verkäufer haften."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Die Garantie ist eine freiwillige Zusatzleistung. Sie ersetzt die gesetzlichen Mängelrechte nicht automatisch."
+    },
+    {
+      id: 59,
+      module: "Meister Teil 4",
+      topic: "Ausbildung planen",
+      difficulty: "Leicht",
+      question:
+        "Im Betrieb entsteht Streit darüber, ab wann ein Auszubildender rechtlich volljährig ist. Ein Kollege meint, das sei erst am Tag nach dem 18. Geburtstag der Fall. Welche Aussage ist am ehesten richtig?",
+      options: [
+        "Volljährigkeit tritt erst mit dem ersten Arbeitstag nach dem 18. Geburtstag ein.",
+        "Volljährigkeit tritt grundsätzlich mit der Vollendung des 18. Lebensjahres ein.",
+        "Volljährigkeit beginnt erst nach Zugang des ersten Arbeitsvertrags.",
+        "Volljährigkeit hängt vom Berufsschulbesuch ab."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Mit Vollendung des 18. Lebensjahres tritt die Volljährigkeit ein. Diese Fristenlogik wird in Prüfungen gern abgefragt."
+    },
+    {
+      id: 66,
+      module: "Meister Teil 4",
+      topic: "Ausbildung vorbereiten",
+      difficulty: "Mittel",
+      question:
+        "Während der Probezeit stellt ein Betrieb fest, dass ein Ausbildungsverhältnis nicht passt. Der Inhaber meint, eine mündliche Sofortkündigung ohne weitere Form reiche im Ausbildungsverhältnis aus. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "In der Probezeit kann nur mit zweiwöchiger Frist gekündigt werden.",
+        "In der Probezeit kann ohne Einhalten einer Kündigungsfrist gekündigt werden, die Kündigung muss aber schriftlich erfolgen.",
+        "In der Probezeit ist jede Form der Kündigung ausgeschlossen.",
+        "Eine Kündigung in der Probezeit ist nur mit Zustimmung der Kammer wirksam."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. In der Probezeit ist die Kündigung fristlos möglich, muss aber schriftlich erfolgen. Genau diese Kombination wird oft verwechselt."
+    }
+  ],
+  "Gründung und Übernahme planen": [
+    {
+      id: 8,
+      module: "Meister Teil 3",
+      topic: "Gründung und Übernahme planen",
+      difficulty: "Leicht",
+      question:
+        "Ein Meister überlegt, statt neu zu gründen einen bestehenden kleinen Betrieb zu übernehmen. Vor einer Entscheidung will er sich zuerst einen belastbaren Überblick über Chancen und Risiken verschaffen. Welche Maßnahme ist am ehesten geeignet?",
+      options: [
+        "Wirtschaftliche Unterlagen, Kundenstruktur und laufende Verpflichtungen prüfen.",
+        "Den Betrieb möglichst schnell übernehmen, um keine Zeit zu verlieren.",
+        "Nur das Firmenfahrzeug bewerten, weil es meist den Hauptwert darstellt.",
+        "Auf eine Prüfung verzichten, wenn der bisherige Inhaber glaubwürdig wirkt."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Vor Übernahmen müssen wirtschaftliche und rechtliche Grundlagen geprüft werden. Vertrauen ersetzt keine saubere Prüfung."
+    },
+    {
+      id: 9,
+      module: "Meister Teil 3",
+      topic: "Gründung und Übernahme planen",
+      difficulty: "Mittel",
+      question:
+        "Eine Gründerin möchte mit möglichst geringem Startkapital eine haftungsbeschränkte Rechtsform wählen. Zugleich ist ihr bewusst, dass sie eine Kapitalgesellschaft mit bestimmten Gründungsformalitäten errichtet. Welche Aussage trifft am ehesten zu?",
+      options: [
+        "Eine UG kann mit geringem Kapital gegründet werden, bleibt aber eine Kapitalgesellschaft mit formalen Anforderungen.",
+        "Eine GbR wäre passend, weil dort automatisch Haftungsbeschränkung eintritt.",
+        "Eine OHG ist die typische haftungsbeschränkte Einstiegsform.",
+        "Eine GmbH ist nur zulässig, wenn mindestens vier Personen gründen."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Die UG verbindet geringes Stammkapital mit den Strukturen einer Kapitalgesellschaft. Die anderen Antworten enthalten typische Fallen."
+    },
+    {
+      id: 10,
+      module: "Meister Teil 3",
+      topic: "Gründung und Übernahme planen",
+      difficulty: "Mittel",
+      question:
+        "Ein Gründer plant seinen künftigen Betrieb, kümmert sich aber weder um Standort noch Zielkunden oder Personalbedarf. Er meint, das lasse sich nach der Eröffnung flexibel regeln. Welche Bewertung ist am ehesten zutreffend?",
+      options: [
+        "Das ist sinnvoll, weil Gründungsplanung im Wesentlichen aus dem Kauf von Werkzeugen besteht.",
+        "Das ist problematisch, weil Standort-, Markt- und Ressourcenplanung zum Gründungsprozess gehören.",
+        "Das ist nur bei einer GmbH relevant.",
+        "Das wird erst nach der ersten Steuerprüfung bedeutsam."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Eine Gründung braucht mehr als Investitionen. Markt- und Ressourcenplanung gehören dazu."
+    },
+    {
+      id: 11,
+      module: "Meister Teil 3",
+      topic: "Gründung und Übernahme planen",
+      difficulty: "Schwer",
+      question:
+        "Ein Malermeister plant die Betriebsgründung. In seinem Finanzierungsplan berücksichtigt er Transporter, Maschinen und Erstausstattung. Für die ersten Monate unterstellt er, dass eingehende Kundenrechnungen alle laufenden Kosten rechtzeitig decken. Löhne, Miete, Versicherungen, private Entnahmen und verzögerte Zahlungseingänge plant er nicht gesondert ein. Welche Bewertung trifft am ehesten zu?",
+      options: [
+        "Das ist sachgerecht, weil bei Neugründungen vor allem der Investitionsbedarf zu finanzieren ist.",
+        "Das ist ausreichend, wenn bereits erste Angebote geschrieben wurden.",
+        "Das ist riskant, weil neben dem Investitionsbedarf auch der laufende Liquiditätsbedarf berücksichtigt werden muss.",
+        "Das ist nur dann problematisch, wenn ausschließlich mit Fremdkapital finanziert wird."
+      ],
+      correctIndex: 2,
+      explanation:
+        "Richtig ist Antwort C. Genau hier liegt die prüfungsnahe Falle: Investition und Liquidität sind nicht dasselbe."
+    },
+    {
+      id: 12,
+      module: "Meister Teil 3",
+      topic: "Gründung und Übernahme planen",
+      difficulty: "Leicht",
+      question:
+        "Ein angehender Betriebsinhaber plant seine Gründung sehr genau bei Fahrzeugen und Werkzeugen, berücksichtigt aber weder Miete noch Löhne noch Anlaufkosten der ersten Monate. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Das ist ausreichend, weil bei der Gründung nur Sachinvestitionen finanziert werden müssen.",
+        "Das ist problematisch, weil auch die Liquidität in der Startphase abgesichert werden muss.",
+        "Das ist nur bei einer GmbH relevant.",
+        "Das ist unkritisch, solange ein privates Fahrzeug vorhanden ist."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Zur Gründungsplanung gehört nicht nur der Kauf von Betriebsmitteln. Die Anlaufphase muss mitgedacht werden."
+    },
+    {
+      id: 13,
+      module: "Meister Teil 3",
+      topic: "Gründung und Übernahme planen",
+      difficulty: "Mittel",
+      question:
+        "Ein Gründer bezahlt betriebliche Einkäufe regelmäßig vom Privatkonto und hebt Barbelege nicht auf. Er meint, in kleinen Betrieben lasse sich das später schon nachvollziehen. Welche Aussage passt am ehesten?",
+      options: [
+        "Das ist in der Anfangsphase unproblematisch, weil kleine Betriebe keine saubere Belegführung brauchen.",
+        "Das ist sinnvoll, weil private und betriebliche Vorgänge möglichst vermischt werden sollten.",
+        "Das ist kritisch, weil geordnete Belege und eine klare Trennung von privat und betrieblich wichtig sind.",
+        "Das betrifft nur Kapitalgesellschaften, nicht aber andere Rechtsformen."
+      ],
+      correctIndex: 2,
+      explanation:
+        "Richtig ist Antwort C. Belegordnung und Trennung der Bereiche sind kaufmännische Grundlagen. Das wird oft unscheinbar abgefragt."
+    },
+    {
+      id: 14,
+      module: "Meister Teil 3",
+      topic: "Gründung und Übernahme planen",
+      difficulty: "Schwer",
+      question:
+        "Vor der Übernahme eines bestehenden Betriebs prüfen die Interessenten nur Umsatz, Fuhrpark und Werkzeuge. Offene Forderungen, laufende Verpflichtungen und mögliche Verbindlichkeiten bleiben unberücksichtigt. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Das reicht aus, weil bei Übernahmen vor allem sichtbare Vermögensgegenstände wichtig sind.",
+        "Das ist riskant, weil wirtschaftliche und rechtliche Verpflichtungen vor einer Übernahme mitgeprüft werden müssen.",
+        "Das ist nur bei Industrieunternehmen relevant.",
+        "Das ist unkritisch, wenn die Werkstatt gut ausgestattet erscheint."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Eine Übernahmeprüfung darf sich nicht auf Umsatz und Inventar beschränken. Risiken und Verpflichtungen sind zentral."
+    },
+    {
+      id: 41,
+      module: "Meister Teil 3",
+      topic: "Gründung und Übernahme planen",
+      difficulty: "Mittel",
+      question:
+        "Zwei Gründer schwanken zwischen UG und GmbH. Einer meint, beide Rechtsformen seien wirtschaftlich praktisch gleich, nur der Name sei anders. Welche Aussage trifft am ehesten zu?",
+      options: [
+        "Das stimmt, weil sowohl UG als auch GmbH ohne festes Stammkapital gegründet werden können.",
+        "Die GmbH setzt grundsätzlich ein Stammkapital von 25.000 Euro voraus, während die UG mit geringerem Kapital gegründet werden kann.",
+        "Die UG haftet persönlich, die GmbH dagegen nicht.",
+        "Die UG darf im Gegensatz zur GmbH keine Gewinne erzielen."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Die GmbH hat das gesetzliche Stammkapital von 25.000 Euro; die UG kann mit geringerem Kapital starten."
+    },
+    {
+      id: 42,
+      module: "Meister Teil 3",
+      topic: "Gründung und Übernahme planen",
+      difficulty: "Schwer",
+      question:
+        "Ein langjähriger Geselle möchte sich in einem zulassungspflichtigen Handwerk selbstständig machen, obwohl er keinen Meisterbrief hat. Er beruft sich auf eine gesetzliche Ausnahme. Welche Aussage passt am ehesten?",
+      options: [
+        "Das ist generell ausgeschlossen, weil in zulassungspflichtigen Handwerken immer ein Meisterbrief vorliegen muss.",
+        "Eine Ausübungsberechtigung kann unter den Voraussetzungen des § 7b HwO in Betracht kommen.",
+        "Die Eintragung ist immer möglich, wenn mindestens sechs Gesellenjahre vorliegen, unabhängig von der Tätigkeit.",
+        "Die Handwerksordnung regelt Ausnahmen nur für zulassungsfreie Handwerke."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Die Altgesellenregelung nach § 7b HwO ist eine gesetzliche Ausnahme, aber an klare Voraussetzungen gebunden."
+    },
+    {
+      id: 43,
+      module: "Meister Teil 3",
+      topic: "Gründung und Übernahme planen",
+      difficulty: "Mittel",
+      question:
+        "Ein Betrieb benötigt kurzfristig neue Maschinen, möchte seine vorhandenen liquiden Mittel aber möglichst schonen. Der Inhaber erwägt daher Leasing statt Kauf. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Leasing kann die Liquidität schonen, weil nicht sofort der volle Kaufpreis aufgebracht werden muss.",
+        "Leasing ist nur für Privatpersonen zulässig, nicht für Handwerksbetriebe.",
+        "Leasing verhindert jede laufende Kostenbelastung.",
+        "Leasing führt dazu, dass der Betrieb die Maschine automatisch ohne Vertragspflichten erhält."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Leasing kann die Liquidität entlasten, weil statt einer hohen Einmalzahlung laufende Raten anfallen."
+    }
+  ],
+  "Unternehmensführung entwickeln": [
+    {
+      id: 15,
+      module: "Meister Teil 3",
+      topic: "Unternehmensführung entwickeln",
+      difficulty: "Leicht",
+      question:
+        "Ein Betriebsinhaber erstellt Angebote, berücksichtigt dabei aber nur Materialkosten. Löhne, Gemeinkosten und Gewinnzuschlag lässt er regelmäßig unberücksichtigt. Welche Folge ist am ehesten zu erwarten?",
+      options: [
+        "Die Kalkulation kann zu wirtschaftlich nicht tragfähigen Preisen führen.",
+        "Das ist unproblematisch, solange der Kunde den Preis akzeptiert.",
+        "Gemeinkosten spielen nur bei Industriebetrieben eine Rolle.",
+        "Gewinnzuschläge sind im Handwerk grundsätzlich unzulässig."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Eine unvollständige Kalkulation gefährdet die Wirtschaftlichkeit. Gerade diese Auslassungen sind klassisch prüfungsnah."
+    },
+    {
+      id: 16,
+      module: "Meister Teil 3",
+      topic: "Unternehmensführung entwickeln",
+      difficulty: "Mittel",
+      question:
+        "Ein Kunde beauftragt zusätzliche Arbeiten telefonisch. Später behauptet er, ohne schriftlichen Vertrag sei nichts wirksam vereinbart worden. Welche Aussage passt am ehesten?",
+      options: [
+        "Ein Vertrag kann auch mündlich zustande kommen, wenn die Voraussetzungen einer Einigung vorliegen.",
+        "Verträge im Handwerk sind nur mit Firmenstempel wirksam.",
+        "Telefonische Zusatzaufträge sind rechtlich immer bedeutungslos.",
+        "Ein Vertrag entsteht erst mit Rechnungserstellung."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Viele Verträge können auch mündlich geschlossen werden. Genau hier wird gern auf die Schriftformfalle gesetzt."
+    },
+    {
+      id: 17,
+      module: "Meister Teil 3",
+      topic: "Unternehmensführung entwickeln",
+      difficulty: "Mittel",
+      question:
+        "Ein Unternehmer möchte Mitarbeiter führen, legt aber Zuständigkeiten, Abläufe und Verantwortungen bewusst nicht fest. So könne man flexibler bleiben. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Das ist sinnvoll, weil gute Führung vor allem von Unklarheit lebt.",
+        "Das ist problematisch, weil Führung klare Verantwortungen und nachvollziehbare Abläufe braucht.",
+        "Das ist nur dann falsch, wenn der Betrieb mehr als 20 Personen hat.",
+        "Das betrifft nur das Marketing, nicht die Führung."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Unternehmensführung braucht klare Strukturen und Verantwortungen. Bewusste Unklarheit schafft Risiken."
+    },
+    {
+      id: 18,
+      module: "Meister Teil 3",
+      topic: "Unternehmensführung entwickeln",
+      difficulty: "Schwer",
+      question:
+        "Ein Unternehmer will organisatorische Probleme lösen, indem er Zuständigkeiten absichtlich unklar lässt. So könne er später flexibel Verantwortung einzelnen Mitarbeitern zuweisen. Welche Bewertung ist am ehesten zutreffend?",
+      options: [
+        "Das stärkt die Unternehmensführung, weil Unklarheit Anpassung erleichtert.",
+        "Das ist problematisch, weil klare Zuständigkeiten und nachvollziehbare Organisation Führungsaufgaben unterstützen.",
+        "Das ist nur in Großbetrieben unzulässig.",
+        "Das betrifft allein den Datenschutz und keine Führungsfragen."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Gute Unternehmensführung braucht klare Verantwortungen und Strukturen. Genau das wird hier geprüft."
+    },
+    {
+      id: 19,
+      module: "Meister Teil 3",
+      topic: "Unternehmensführung entwickeln",
+      difficulty: "Leicht",
+      question:
+        "Ein Betrieb gewährt in seinem Angebot 2 Prozent Skonto bei Zahlung innerhalb von zehn Tagen. Der Kunde überweist am achten Tag und zieht den vereinbarten Betrag ab. Wie ist das am ehesten zu bewerten?",
+      options: [
+        "Der Abzug ist im Grundsatz zulässig, wenn das Skonto so vereinbart wurde.",
+        "Skonto ist im Handwerk grundsätzlich unzulässig.",
+        "Der Kunde darf Skonto nur abziehen, wenn die Rechnung bar bezahlt wird.",
+        "Der Skontoabzug wird erst nach einer schriftlichen Erinnerung wirksam."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Wurde Skonto vereinbart und die Frist eingehalten, kann der Abzug wirksam sein."
+    },
+    {
+      id: 20,
+      module: "Meister Teil 3",
+      topic: "Unternehmensführung entwickeln",
+      difficulty: "Mittel",
+      question:
+        "Ein Malerbetrieb schreibt regelmäßig Rechnungen und arbeitet ausgebucht, hat aber trotzdem wiederholt Probleme, laufende Zahlungen pünktlich zu leisten. Welche Ursache ist am ehesten denkbar?",
+      options: [
+        "Das ist ausgeschlossen, weil viele Aufträge automatisch genug Liquidität bedeuten.",
+        "Offene Forderungen und ungünstige Zahlungsflüsse können trotz guter Auftragslage zu Liquiditätsproblemen führen.",
+        "Liquidität betrifft nur Kapitalgesellschaften.",
+        "Das kann nur an zu wenig Werkzeug liegen."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Zwischen Auftragslage, Gewinn und Liquidität besteht ein Unterschied. Diese Unterscheidung ist in Teil 3 wichtig."
+    },
+    {
+      id: 21,
+      module: "Meister Teil 3",
+      topic: "Unternehmensführung entwickeln",
+      difficulty: "Mittel",
+      question:
+        "Nach mehreren abgeschlossenen Baustellen zeigt die Nachkalkulation, dass vergleichbare Aufträge regelmäßig unter den eigenen Kosten abgerechnet wurden. Welche Reaktion ist unternehmerisch am sinnvollsten?",
+      options: [
+        "Die Ergebnisse ignorieren, weil abgeschlossene Aufträge nicht mehr relevant sind.",
+        "Künftige Kalkulationen, Abläufe oder Preise auf Basis der Erkenntnisse anpassen.",
+        "Künftig nur noch Barzahlung verlangen, damit die Kalkulation stimmt.",
+        "Die Nachkalkulation ganz abschaffen, um Zeit zu sparen."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Nachkalkulation dient gerade dazu, aus Abweichungen zu lernen und Folgekalkulationen zu verbessern."
+    },
+    {
+      id: 22,
+      module: "Meister Teil 3",
+      topic: "Unternehmensführung entwickeln",
+      difficulty: "Schwer",
+      question:
+        "Im Büro werden fällige Forderungen über Wochen nicht verfolgt, weil man Kunden nicht verärgern möchte. Gleichzeitig wird die Kontolage immer enger. Welche Bewertung ist am ehesten zutreffend?",
+      options: [
+        "Das ist unternehmerisch vertretbar, weil Mahnwesen nur für Großbetriebe wichtig ist.",
+        "Das ist unproblematisch, solange neue Aufträge hereinkommen.",
+        "Das ist kritisch, weil ein geordnetes Forderungsmanagement wichtig für die Liquidität des Betriebs ist.",
+        "Das betrifft allein das Steuerrecht und nicht die Unternehmensführung."
+      ],
+      correctIndex: 2,
+      explanation:
+        "Richtig ist Antwort C. Offene Forderungen beeinflussen die Liquidität direkt. Mahnwesen und Zahlungsüberwachung gehören deshalb zur Unternehmensführung."
+    },
+    {
+      id: 44,
+      module: "Meister Teil 3",
+      topic: "Unternehmensführung entwickeln",
+      difficulty: "Mittel",
+      question:
+        "Ein Kunde beauftragt einen Malerbetrieb mit einer individuell abgestimmten Beschichtung und erwartet am Ende ein mängelfreies Ergebnis. Der Inhaber meint, geschuldet sei nur das bloße Tätigwerden seiner Mitarbeiter. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Bei einem Werkvertrag wird grundsätzlich ein konkreter Erfolg geschuldet.",
+        "Bei einem Werkvertrag schuldet der Unternehmer nur seine Anwesenheit auf der Baustelle.",
+        "Ein Werkvertrag liegt nur dann vor, wenn Material vom Kunden gestellt wird.",
+        "Ein Werkvertrag endet automatisch schon mit Arbeitsbeginn."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Beim Werkvertrag nach § 631 BGB ist der geschuldete Erfolg zentral, nicht nur das bloße Tätigwerden."
+    },
+    {
+      id: 45,
+      module: "Meister Teil 3",
+      topic: "Unternehmensführung entwickeln",
+      difficulty: "Mittel",
+      question:
+        "Ein Kunde reklamiert ein neu gekauftes Farbspritzgerät. Der Verkäufer erklärt, ohne freiwillige Garantie bestehe überhaupt kein Anspruch. Welche Aussage trifft am ehesten zu?",
+      options: [
+        "Das ist richtig, weil Ansprüche bei Mängeln nur aus einer Garantie folgen können.",
+        "Das ist falsch, weil gesetzliche Mängelrechte und Garantie voneinander zu unterscheiden sind.",
+        "Eine Garantie ersetzt immer automatisch die gesetzliche Mängelhaftung.",
+        "Gewährleistungsrechte bestehen nur bei gebrauchten Sachen."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Die Garantie ist eine freiwillige Zusatzleistung; gesetzliche Mängelrechte bestehen davon unabhängig."
+    },
+    {
+      id: 46,
+      module: "Meister Teil 3",
+      topic: "Unternehmensführung entwickeln",
+      difficulty: "Schwer",
+      question:
+        "Ein Betrieb kauft ein neues Gerät, das bei Übergabe mangelhaft ist. Der Käufer verlangt sofort die vollständige Rückzahlung des Kaufpreises, obwohl der Verkäufer noch keine Gelegenheit zur Behebung des Mangels hatte. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Das ist im Regelfall richtig, weil bei jedem Mangel sofort Geld zurück verlangt werden kann.",
+        "Der Käufer muss sich regelmäßig zunächst auf Nacherfüllung verweisen lassen.",
+        "Eine Nacherfüllung ist nur bei Werkverträgen, nicht bei Kaufverträgen vorgesehen.",
+        "Bei mangelhaften Sachen ist ausschließlich ein Umtausch, nie aber eine Nachbesserung möglich."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Bei Mängeln steht regelmäßig zunächst die Nacherfüllung im Vordergrund; Rücktritt oder Minderung kommen typischerweise erst später in Betracht."
+    }
+  ],
+  "Buchungssätze bilden": [
+    {
+      id: 89,
+      module: "Meister Teil 3",
+      topic: "Buchungssätze bilden",
+      difficulty: "Leicht",
+      question:
+        "Du kaufst neue Pinsel für 20 € netto und bezahlst sofort bar aus der Firmenkasse. Wie lautet der Buchungssatz und der Konten-Effekt?",
+      options: [
+        "Bürobedarf (Aufwand) AN Kasse (Aktiv-), Betrag: 20 €",
+        "Kasse AN Bürobedarf, Betrag: 20 €",
+        "Bürobedarf AN Verbindlichkeiten, Betrag: 20 €",
+        "Kasse (Aktiv+) AN Bank (Aktiv-), Betrag: 20 €"
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Der Aufwand steigt durch den Einkauf, die Kasse nimmt wegen der Barzahlung ab."
+    },
+    {
+      id: 90,
+      module: "Meister Teil 3",
+      topic: "Buchungssätze bilden",
+      difficulty: "Leicht",
+      question:
+        "Ein Kunde überweist dir 1.500 € für eine fertig tapezierte Wohnung auf dein Firmen-Bankkonto. Wie wird gebucht?",
+      options: [
+        "Bank (Aktiv+) AN Forderungen (Aktiv-), Betrag: 1.500 €",
+        "Forderungen (Aktiv+) AN Bank (Aktiv-), Betrag: 1.500 €",
+        "Bank (Aktiv+) AN Verbindlichkeiten (Passiv+), Betrag: 1.500 €",
+        "Kasse (Aktiv+) AN Bank (Aktiv-), Betrag: 1.500 €"
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Das Bankkonto nimmt zu, die offene Forderung gegenüber dem Kunden nimmt ab."
+    },
+    {
+      id: 91,
+      module: "Meister Teil 3",
+      topic: "Buchungssätze bilden",
+      difficulty: "Mittel",
+      question:
+        "Du kaufst beim Großhändler Fassadenfarbe für 3.000 € auf Rechnung (Zielkauf). Welcher Effekt tritt ein?",
+      options: [
+        "Material/RHB (Aktiv+) AN Verbindlichkeiten/VLL (Passiv+), Betrag: 3.000 €",
+        "Material/RHB (Aktiv+) AN Bank (Aktiv-), Betrag: 3.000 €",
+        "Verbindlichkeiten/VLL (Passiv-) AN Bank (Aktiv-), Betrag: 3.000 €",
+        "Material/RHB (Aktiv-) AN Kasse (Aktiv-), Betrag: 3.000 €"
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Beim Zielkauf steigt der Materialbestand und zugleich entstehen Verbindlichkeiten."
+    },
+    {
+      id: 92,
+      module: "Meister Teil 3",
+      topic: "Buchungssätze bilden",
+      difficulty: "Mittel",
+      question:
+        "Du überweist die 3.000 € für die Fassadenfarbe vom Bankkonto an den Großhändler, um deine Schulden zu begleichen. Wie lautet der Satz?",
+      options: [
+        "Verbindlichkeiten/VLL (Passiv-) AN Bank (Aktiv-), Betrag: 3.000 €",
+        "Bank (Aktiv+) AN Verbindlichkeiten/VLL (Passiv+), Betrag: 3.000 €",
+        "Material/RHB (Aktiv+) AN Bank (Aktiv-), Betrag: 3.000 €",
+        "Verbindlichkeiten/VLL (Passiv+) AN Kasse (Aktiv-), Betrag: 3.000 €"
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Durch die Zahlung sinken die Verbindlichkeiten und gleichzeitig sinkt das Bankguthaben."
+    },
+    {
+      id: 93,
+      module: "Meister Teil 3",
+      topic: "Buchungssätze bilden",
+      difficulty: "Mittel",
+      question:
+        "Du kaufst eine neue Schleifmaschine für 800 € auf Rechnung beim Werkzeughändler. Wie buchst du den Zugang?",
+      options: [
+        "BGA (Aktiv+) AN Verbindlichkeiten/VLL (Passiv+), Betrag: 800 €",
+        "BGA (Aktiv+) AN Kasse (Aktiv-), Betrag: 800 €",
+        "Verbindlichkeiten/VLL (Passiv-) AN BGA (Aktiv-), Betrag: 800 €",
+        "Fuhrpark (Aktiv+) AN Bank (Aktiv-), Betrag: 800 €"
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Die Schleifmaschine erhöht die Betriebs- und Geschäftsausstattung; weil auf Rechnung gekauft wird, steigen die Verbindlichkeiten."
+    }
+  ],
+  "Ausbildung planen": [
+    {
+      id: 23,
+      module: "Meister Teil 4",
+      topic: "Ausbildung planen",
+      difficulty: "Leicht",
+      question:
+        "Ein Betrieb möchte erstmals ausbilden. Der Inhaber fragt, womit er vor dem Start sinnvoll beginnen sollte. Welche Maßnahme passt am ehesten?",
+      options: [
+        "Prüfen, ob Betrieb und verantwortliche Person für die Ausbildung geeignet sind.",
+        "Zuerst einen Azubi einstellen und die Voraussetzungen später klären.",
+        "Nur die Werkstattgröße messen, weil allein sie entscheidend ist.",
+        "Auf Planung verzichten, wenn genug praktische Arbeit vorhanden ist."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Vor Beginn der Ausbildung stehen Eignungs- und Planungsschritte. Diese Reihenfolge ist prüfungsrelevant."
+    },
+    {
+      id: 24,
+      module: "Meister Teil 4",
+      topic: "Ausbildung planen",
+      difficulty: "Mittel",
+      question:
+        "Ein Ausbilder bezeichnet den Ausbildungsrahmenplan als bloßen Wunschzettel ohne größere Bedeutung für die betriebliche Ausbildung. Welche Aussage trifft am ehesten zu?",
+      options: [
+        "Der Ausbildungsrahmenplan gibt eine wichtige Orientierung für Inhalte und zeitliche Gliederung der Ausbildung.",
+        "Der Ausbildungsrahmenplan ist nur für Abschlussfeiern gedacht.",
+        "Der Ausbildungsrahmenplan ersetzt jede Unterweisung im Betrieb.",
+        "Der Ausbildungsrahmenplan gilt nur für die Berufsschule."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Der Rahmenplan hilft bei Struktur und Planung der Ausbildung. Er ist gerade nicht nur eine unverbindliche Notiz."
+    },
+    {
+      id: 25,
+      module: "Meister Teil 4",
+      topic: "Ausbildung planen",
+      difficulty: "Mittel",
+      question:
+        "Ein Betrieb will ausbilden, hat aber weder geklärt, welche Inhalte er selbst vermitteln kann, noch wie fehlende Inhalte ausgeglichen werden sollen. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Das ist unproblematisch, solange der Azubi motiviert ist.",
+        "Das ist kritisch, weil die Ausbildung planbar und inhaltlich abgesichert sein muss.",
+        "Das ist nur bei Volljährigen relevant.",
+        "Das betrifft allein die Berufsschule."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Ausbildung planen heißt auch, die tatsächliche Vermittlung der Inhalte abzusichern. Reiner guter Wille reicht nicht."
+    },
+    {
+      id: 26,
+      module: "Meister Teil 4",
+      topic: "Ausbildung planen",
+      difficulty: "Schwer",
+      question:
+        "Ein Ausbilder plant eine Unterweisung ausschließlich danach, welches Material gerade verfügbar ist. Lernziel, Ausbildungsstand und betrieblicher Ausbildungsplan spielen keine Rolle. Wo liegt der Hauptfehler?",
+      options: [
+        "Die Planung vernachlässigt Lernziel und Ausbildungsstand als zentrale didaktische Grundlage.",
+        "Das ist richtig, weil Material immer wichtiger ist als Lernziele.",
+        "Das ist nur dann problematisch, wenn der Azubi im dritten Lehrjahr ist.",
+        "Ein betrieblicher Ausbildungsplan ist bei Unterweisungen grundsätzlich ohne Bedeutung."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Eine Unterweisung muss sich an Lernziel und Ausbildungsstand orientieren. Reine Materiallogik reicht didaktisch nicht aus."
+    },
+    {
+      id: 47,
+      module: "Meister Teil 4",
+      topic: "Ausbildung planen",
+      difficulty: "Leicht",
+      question:
+        "Ein Ausbilder sagt, ein Kind sei erst ab dem achten Geburtstag beschränkt geschäftsfähig. Ein Kollege widerspricht und verweist auf die gesetzliche Vollendung des siebenten Lebensjahres. Welche Aussage ist am ehesten richtig?",
+      options: [
+        "Beschränkte Geschäftsfähigkeit beginnt grundsätzlich mit der Vollendung des siebenten Lebensjahres.",
+        "Beschränkte Geschäftsfähigkeit beginnt erst mit dem Tag nach dem achten Geburtstag.",
+        "Beschränkte Geschäftsfähigkeit beginnt erst mit der Einschulung.",
+        "Beschränkte Geschäftsfähigkeit tritt erst mit Vollendung des 18. Lebensjahres ein."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Wer das siebente Lebensjahr vollendet hat, ist nach dem BGB grundsätzlich beschränkt geschäftsfähig."
+    },
+    {
+      id: 48,
+      module: "Meister Teil 4",
+      topic: "Ausbildung planen",
+      difficulty: "Mittel",
+      question:
+        "Ein Ausbilder möchte die Probezeit im Ausbildungsvertrag auf zwei Wochen verkürzen, damit schneller Klarheit herrscht. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Das ist möglich, solange beide Vertragsparteien zustimmen.",
+        "Das ist unzulässig, weil die Probezeit mindestens einen Monat betragen muss.",
+        "Das ist nur bei Minderjährigen unzulässig.",
+        "Eine Probezeit darf im Ausbildungsvertrag frei vereinbart oder ganz weggelassen werden."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Nach § 20 BBiG muss die Probezeit mindestens einen Monat und darf höchstens vier Monate betragen."
+    },
+    {
+      id: 68,
+      module: "Meister Teil 4",
+      topic: "Ausbildung planen",
+      difficulty: "Leicht",
+      question:
+        "Ein Ausbilder sagt, die Ausbildungsordnung lege für jeden Beruf die genaue Ausbildungsvergütung in Euro fest. Welche Aussage trifft am ehesten zu?",
+      options: [
+        "Das ist richtig, weil die Ausbildungsordnung immer den konkreten Monatsbetrag enthält.",
+        "Das ist falsch; die Ausbildungsordnung regelt unter anderem Struktur, Dauer, Inhalte und Prüfungsanforderungen, aber nicht die exakte Vergütung in Euro.",
+        "Die Ausbildungsordnung gilt nur für die Berufsschule.",
+        "Die Ausbildungsordnung ist nur eine freiwillige Empfehlung ohne Prüfungsbezug."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Die Ausbildungsordnung ordnet Beruf, Inhalte, Dauer und Prüfung, nicht aber den konkreten Euro-Betrag der Vergütung."
+    },
+    {
+      id: 69,
+      module: "Meister Teil 4",
+      topic: "Ausbildung planen",
+      difficulty: "Leicht",
+      question:
+        "In einem Betrieb wird über die Rollen in der Ausbildung gesprochen. Welche Zuordnung der Ausbildungsbeteiligten ist am ehesten richtig?",
+      options: [
+        "Ausbildender ist der Betrieb, Ausbilder ist die verantwortliche ausbildende Person, Auszubildender ist der Lehrling.",
+        "Ausbildender und Auszubildender sind immer dieselbe Person.",
+        "Der Ausbilder ist immer die Berufsschule.",
+        "Die Handwerkskammer ist automatisch der Ausbildende im Vertrag."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Ausbildender ist meist der Betrieb als Vertragspartner; Ausbilder ist die persönlich verantwortliche Person im Betrieb."
+    }
+  ],
+  "Ausbildung vorbereiten": [
+    {
+      id: 27,
+      module: "Meister Teil 4",
+      topic: "Ausbildung vorbereiten",
+      difficulty: "Leicht",
+      question:
+        "Ein Betrieb möchte neue Auszubildende einstellen. Der Inhaber meint, Schulnoten seien das einzige Auswahlkriterium, alles andere sei unnötig. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Die Auswahl sollte breiter betrachtet werden, etwa mit Blick auf Eignung, Motivation und Ausbildungsbezug.",
+        "Schulnoten allein reichen immer aus.",
+        "Persönliche Eignung darf bei Azubis nicht berücksichtigt werden.",
+        "Ein Auswahlgespräch ist rechtlich nie sinnvoll."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Die Auswahl von Auszubildenden sollte mehrere geeignete Kriterien einbeziehen. Reine Notenfixierung greift oft zu kurz."
+    },
+    {
+      id: 28,
+      module: "Meister Teil 4",
+      topic: "Ausbildung vorbereiten",
+      difficulty: "Leicht",
+      question:
+        "Ein Betrieb möchte einen 16-jährigen Auszubildenden einstellen. Der Inhaber will den Jugendlichen sofort anfangen lassen und die ärztliche Untersuchung später nachreichen. Welche Aussage ist am ehesten richtig?",
+      options: [
+        "Das ist zulässig, wenn der Jugendliche schriftlich erklärt, gesund zu sein.",
+        "Der Jugendliche darf grundsätzlich nur beschäftigt werden, wenn die vorgeschriebene Erstuntersuchung erfolgt ist und die Bescheinigung vorliegt.",
+        "Die Erstuntersuchung ist nur bei gefährlichen Berufen notwendig.",
+        "Eine ärztliche Bescheinigung wird erst nach dem ersten Ausbildungsjahr benötigt."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Bei Jugendlichen ist die Erstuntersuchung vor der Beschäftigung grundsätzlich ein zentrales Thema."
+    },
+    {
+      id: 29,
+      module: "Meister Teil 4",
+      topic: "Ausbildung vorbereiten",
+      difficulty: "Mittel",
+      question:
+        "Ein Betriebsinhaber möchte einen sehr erfahrenen Facharbeiter sofort als alleinigen Ausbilder einsetzen. Der Mitarbeiter ist fachlich stark, hat aber keine nachgewiesene berufs- und arbeitspädagogische Eignung. Welche Aussage ist am ehesten richtig?",
+      options: [
+        "Fachliche Erfahrung allein genügt nicht automatisch für die Ausbilderrolle.",
+        "Jeder langjährige Geselle ist ohne Weiteres automatisch Ausbilder.",
+        "Pädagogische Eignung ist nur bei kaufmännischen Berufen notwendig.",
+        "Die Eignung entscheidet allein der Azubi nach Arbeitsbeginn."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Für die Ausbilderrolle zählen nicht nur Fachkenntnisse. Auch die berufs- und arbeitspädagogische Eignung ist wichtig."
+    },
+    {
+      id: 30,
+      module: "Meister Teil 4",
+      topic: "Ausbildung vorbereiten",
+      difficulty: "Schwer",
+      question:
+        "Ein minderjähriger Auszubildender hat die erste Nachuntersuchung nach einem Jahr nicht durchführen lassen und die Bescheinigung auch nach schriftlicher Aufforderung nicht vorgelegt. Der Betriebsinhaber möchte ihn trotzdem weiterbeschäftigen, weil auf der Baustelle Personal fehlt. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Die Weiterbeschäftigung ist zulässig, solange der Jugendliche bisher keine Beschwerden gezeigt hat.",
+        "Spätestens nach 14 Monaten seit Aufnahme der ersten Beschäftigung darf der Jugendliche ohne die Bescheinigung nicht weiterbeschäftigt werden.",
+        "Die Bescheinigung ist nur für die Berufsschule wichtig, nicht für den Betrieb.",
+        "Das Beschäftigungsverbot greift erst mit Vollendung des 18. Lebensjahres."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Nach § 33 JArbSchG greift ohne vorgelegte Bescheinigung nach Ablauf von 14 Monaten ein Beschäftigungsverbot."
+    },
+    {
+      id: 31,
+      module: "Meister Teil 4",
+      topic: "Ausbildung vorbereiten",
+      difficulty: "Mittel",
+      question:
+        "Ein Betrieb möchte einen Ausbildungsvertrag möglichst knapp halten und auf wesentliche Absprachen lieber mündlich verweisen. Welche Bewertung passt am ehesten?",
+      options: [
+        "Das ist sinnvoll, weil Ausbildungsverhältnisse am besten ohne klare Vereinbarungen laufen.",
+        "Das ist kritisch, weil wesentliche Ausbildungsgrundlagen sauber vorbereitet und geregelt sein sollten.",
+        "Das ist nur bei Teilzeitkräften relevant.",
+        "Das betrifft nur die Innung, nicht den Betrieb."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Ausbildung vorbereiten bedeutet auch, die Grundlagen ordentlich festzulegen. Unklare Vereinbarungen erzeugen unnötige Risiken."
+    },
+    {
+      id: 32,
+      module: "Meister Teil 4",
+      topic: "Ausbildung vorbereiten",
+      difficulty: "Schwer",
+      question:
+        "Ein Betrieb stellt einen Azubi ein, ohne den späteren Ausbildungsablauf, Zuständigkeiten und Lernorte sauber vorzubereiten. Der Inhaber meint, das könne man alles spontan regeln. Welche Bewertung trifft am ehesten zu?",
+      options: [
+        "Das ist ausreichend, weil Ausbildung im Wesentlichen spontan funktioniert.",
+        "Das ist problematisch, weil gute Ausbildung eine vorbereitete organisatorische und inhaltliche Struktur braucht.",
+        "Das ist nur dann kritisch, wenn mehrere Auszubildende gleichzeitig eingestellt werden.",
+        "Das betrifft ausschließlich den Datenschutz und nicht die Ausbildungsvorbereitung."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Ausbildungsvorbereitung umfasst auch Organisation und Zuständigkeiten. Spontanes Vorgehen führt häufig zu Unsicherheiten."
+    },
+    {
+      id: 49,
+      module: "Meister Teil 4",
+      topic: "Ausbildung vorbereiten",
+      difficulty: "Schwer",
+      question:
+        "Ein 16-jähriger Bewerber unterschreibt den Ausbildungsvertrag allein, weil die Eltern im Urlaub sind. Der Betrieb will sofort mit dieser Unterschrift arbeiten. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Der Vertrag ist endgültig wirksam, weil der Minderjährige den Ausbildungsplatz selbst wollte.",
+        "Bei Minderjährigen hängt die Wirksamkeit ohne erforderliche Zustimmung der gesetzlichen Vertreter von deren Genehmigung ab.",
+        "Die Unterschrift der Eltern ist nur für die Berufsschule, nicht aber für den Vertrag relevant.",
+        "Ausbildungsverträge mit Minderjährigen sind immer ohne Mitwirkung gesetzlicher Vertreter wirksam."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Ohne erforderliche Zustimmung oder Genehmigung der gesetzlichen Vertreter bleibt die Wirksamkeit des Vertrags in der Schwebe."
+    },
+    {
+      id: 71,
+      module: "Meister Teil 4",
+      topic: "Ausbildung vorbereiten",
+      difficulty: "Mittel",
+      question:
+        "Ein Betrieb hat einen Ausbildungsvertrag unterschrieben und legt ihn zunächst nur intern ab. Die Eintragung bei der Handwerkskammer soll irgendwann später erfolgen. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Das reicht aus, weil die Kammer mit Ausbildungsverträgen nichts zu tun hat.",
+        "Der Vertrag muss zur Prüfung und Eintragung in das Verzeichnis der Berufsausbildungsverhältnisse an die zuständige Stelle geschickt werden.",
+        "Die Eintragung ist nur nach bestandener Abschlussprüfung notwendig.",
+        "Die Eintragung ersetzt die Unterschriften im Vertrag."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Der unterschriebene Ausbildungsvertrag gehört zur zuständigen Stelle, damit er geprüft und eingetragen werden kann."
+    },
+    {
+      id: 72,
+      module: "Meister Teil 4",
+      topic: "Ausbildung vorbereiten",
+      difficulty: "Leicht",
+      question:
+        "Ein 17-jähriger Bewerber möchte den Ausbildungsvertrag ohne Eltern unterschreiben. Der Betrieb meint, der Berufswunsch des Jugendlichen reiche aus. Welche Aussage ist am ehesten richtig?",
+      options: [
+        "Bei Minderjährigen müssen die gesetzlichen Vertreter grundsätzlich mitwirken beziehungsweise zustimmen.",
+        "Minderjährige unterschreiben Ausbildungsverträge immer allein.",
+        "Die Eltern dürfen nur mündlich informiert werden, eine Zustimmung ist nie nötig.",
+        "Die Berufsschule unterschreibt anstelle der Eltern."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Minderjährige sind im Vertragsrecht nicht voll geschäftsfähig; deshalb sind die gesetzlichen Vertreter wichtig."
+    },
+    {
+      id: 73,
+      module: "Meister Teil 4",
+      topic: "Ausbildung vorbereiten",
+      difficulty: "Mittel",
+      question:
+        "Ein neuer Auszubildender beginnt im Betrieb. Der Ausbilder möchte die erste Arbeitsschutzunterweisung erst nach einigen Wochen durchführen. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Das ist unproblematisch, solange der Azubi vorsichtig wirkt.",
+        "Die Erstunterweisung zur Arbeitssicherheit muss zu Beginn erfolgen und regelmäßig wiederholt werden.",
+        "Arbeitsschutzunterweisungen sind nur nach einem Unfall erforderlich.",
+        "Unterweisungen zur UVV betreffen nur Gesellen, nicht Auszubildende."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Arbeitssicherheit gehört ab dem ersten Tag in die Ausbildung und muss regelmäßig aufgefrischt werden."
+    },
+    {
+      id: 74,
+      module: "Meister Teil 4",
+      topic: "Ausbildung vorbereiten",
+      difficulty: "Schwer",
+      question:
+        "Ein Betrieb will einem Auszubildenden während der Probezeit mündlich und mit zwei Wochen Frist kündigen. Welche Aussage ist am ehesten richtig?",
+      options: [
+        "In der Probezeit ist eine Kündigung jederzeit ohne Frist möglich, sie muss aber schriftlich erfolgen.",
+        "In der Probezeit ist eine Kündigung nur mit Zustimmung der Eltern möglich, auch bei Volljährigen.",
+        "Eine Kündigung während der Probezeit ist grundsätzlich ausgeschlossen.",
+        "Eine mündliche Kündigung reicht immer aus."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Während der Probezeit kann fristlos gekündigt werden; die Schriftform bleibt aber erforderlich."
+    }
+  ],
+  "Ausbildung durchführen": [
+    {
+      id: 33,
+      module: "Meister Teil 4",
+      topic: "Ausbildung durchführen",
+      difficulty: "Leicht",
+      question:
+        "Ein Azubi macht bei einer neuen Tätigkeit wiederholt kleine Fehler und wirkt dabei unsicher. Welche Reaktion des Ausbilders ist am ehesten lernförderlich?",
+      options: [
+        "Den Ablauf ruhig erklären, Fehler zeitnah besprechen und erneut üben lassen.",
+        "Die Fehler erst am Monatsende gesammelt ansprechen.",
+        "Den Azubi sofort von allen praktischen Arbeiten ausschließen.",
+        "Öffentlich scharf kritisieren, damit mehr Druck entsteht."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Zeitnahe, sachliche Rückmeldung und Übung fördern Lernen. Sammeln oder bloßer Druck helfen didaktisch wenig."
+    },
+    {
+      id: 34,
+      module: "Meister Teil 4",
+      topic: "Ausbildung durchführen",
+      difficulty: "Mittel",
+      question:
+        "Ein Azubi versteht eine Arbeitsanweisung nur teilweise. Der Ausbilder fragt nicht nach, ob alles angekommen ist, sondern setzt die Aufgabe einfach voraus. Welche Aussage trifft am ehesten zu?",
+      options: [
+        "Das ist riskant, weil Rückfragen und Verständnissicherung zum Ausbildungsprozess gehören.",
+        "Das ist sinnvoll, weil Unsicherheit den Lerneffekt immer erhöht.",
+        "Das ist nur bei gefährlichen Arbeiten problematisch.",
+        "Das ist richtig, solange der Azubi pünktlich ist."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Verständnissicherung ist Teil guter Ausbildung. Gerade bei Unterweisungen reicht bloßes Sagen nicht immer aus."
+    },
+    {
+      id: 35,
+      module: "Meister Teil 4",
+      topic: "Ausbildung durchführen",
+      difficulty: "Mittel",
+      question:
+        "Ein Ausbilder möchte Lernziele formulieren und sagt: 'Der Azubi soll irgendwann besser werden.' Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Das reicht aus, weil Lernziele nicht konkret sein müssen.",
+        "Das ist zu ungenau, weil Lernziele möglichst beobachtbar und überprüfbar formuliert sein sollten.",
+        "Das ist nur im ersten Lehrjahr problematisch.",
+        "Das ist besser als ein konkretes Feinlernziel."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Gute Lernziele sind möglichst konkret und beobachtbar. Unklare Formulierungen erschweren Unterweisung und Kontrolle."
+    },
+    {
+      id: 36,
+      module: "Meister Teil 4",
+      topic: "Ausbildung durchführen",
+      difficulty: "Schwer",
+      question:
+        "Ein Azubi erledigt einen Arbeitsablauf korrekt, kann aber nicht erklären, warum die Schritte genau in dieser Reihenfolge nötig sind. Welche Bewertung ist didaktisch am ehesten richtig?",
+      options: [
+        "Die Unterweisung ist vollständig abgeschlossen, weil das praktische Tun genügt.",
+        "Die Handlung wurde ausgeführt, das fachliche Verständnis sollte aber noch vertieft werden.",
+        "Begründungen sind in der Ausbildung grundsätzlich unwichtig.",
+        "Der Azubi sollte die Tätigkeit bis zur Prüfung nicht mehr ausführen."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Nachhaltiges Lernen zeigt sich nicht nur im Ausführen, sondern auch im Verstehen. Genau diese Differenz wird oft geprüft."
+    },
+    {
+      id: 50,
+      module: "Meister Teil 4",
+      topic: "Ausbildung durchführen",
+      difficulty: "Mittel",
+      question:
+        "Ein Ausbilder will eine praktische Unterweisung strukturieren und fragt, welche Reihenfolge der klassischen Vier-Stufen-Methode am ehesten entspricht. Welche Antwort ist richtig?",
+      options: [
+        "Vorbereiten, Vormachen und Erklären, Nachmachen lassen, Üben und Kontrollieren.",
+        "Kontrollieren, Vormachen, Vorbereiten, Nachmachen lassen.",
+        "Nachmachen lassen, Vorbereiten, Kontrollieren, Vormachen.",
+        "Vormachen, Prüfen, Abzeichnen, Wiederholen."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Die Vier-Stufen-Methode folgt typischerweise der Reihenfolge Vorbereiten, Vormachen, Nachmachen und Üben beziehungsweise Kontrollieren."
+    },
+    {
+      id: 51,
+      module: "Meister Teil 4",
+      topic: "Ausbildung durchführen",
+      difficulty: "Mittel",
+      question:
+        "Ein Werkstattmeister sagt, gute Ausbildung funktioniere am besten, wenn der Chef entscheide und der Azubi nur ausführt. Eine Kollegin wirbt für einen kooperativen Führungsstil. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Ein kooperativer Führungsstil kann Lernprozesse fördern, weil Auszubildende stärker eingebunden werden.",
+        "Ein kooperativer Führungsstil ist in der Ausbildung unzulässig.",
+        "Autoritäre Führung ist didaktisch immer überlegen, weil sie Nachfragen vermeidet.",
+        "Führungsstile spielen für Motivation und Lernerfolg keine Rolle."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Kooperative Führung bindet Auszubildende stärker ein und kann Motivation sowie Lernverständnis fördern."
+    },
+    {
+      id: 52,
+      module: "Meister Teil 4",
+      topic: "Ausbildung durchführen",
+      difficulty: "Schwer",
+      question:
+        "Ein Betrieb möchte einen Auszubildenden am Tag seiner schriftlichen Abschlussprüfung noch für einen halben Arbeitstag in der Werkstatt einplanen. Der Inhaber meint, bezahlt werde die Prüfungszeit ohnehin nicht. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Das ist zulässig, weil Prüfungen Privatsache des Auszubildenden sind.",
+        "Auszubildende sind für Prüfungen freizustellen; für die Freistellungszeit ist die Vergütung fortzuzahlen.",
+        "Freistellung gibt es nur für die praktische, nicht für die schriftliche Abschlussprüfung.",
+        "Freistellung ist möglich, aber nur ohne Vergütungsfortzahlung."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Die Teilnahme an Prüfungen fällt unter die Freistellung; die Vergütung ist für diese Zeit fortzuzahlen."
+    },
+    {
+      id: 75,
+      module: "Meister Teil 4",
+      topic: "Ausbildung durchführen",
+      difficulty: "Leicht",
+      question:
+        "Ein Azubi soll erklären, warum eine bestimmte Fachregel beim Beschichten eingehalten werden muss. Welcher Lernbereich steht dabei vor allem im Vordergrund?",
+      options: [
+        "Der kognitive Lernbereich, weil Wissen, Denken und Verstehen angesprochen werden.",
+        "Der psychomotorische Lernbereich, weil ausschließlich Handbewegungen trainiert werden.",
+        "Der affektive Lernbereich, weil nur Werte und Einstellungen geprüft werden.",
+        "Kein Lernbereich, weil Erklären nicht zur Ausbildung gehört."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Kognitiv meint Wissen, Denken, Verstehen und fachliches Begründen."
+    },
+    {
+      id: 76,
+      module: "Meister Teil 4",
+      topic: "Ausbildung durchführen",
+      difficulty: "Leicht",
+      question:
+        "Ein Auszubildender übt, ein Werkstück fachgerecht zu sägen und die Handbewegungen sauber auszuführen. Welcher Lernbereich ist hier besonders betroffen?",
+      options: [
+        "Der affektive Lernbereich.",
+        "Der psychomotorische Lernbereich.",
+        "Der rein rechtliche Lernbereich.",
+        "Der organisatorische Lernbereich."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Psychomotorisch betrifft praktische Fertigkeiten, Bewegung, Koordination und Handgriffe."
+    },
+    {
+      id: 77,
+      module: "Meister Teil 4",
+      topic: "Ausbildung durchführen",
+      difficulty: "Mittel",
+      question:
+        "Ein Ausbilder möchte erreichen, dass ein Azubi Arbeitsschutz nicht nur kennt, sondern aus Überzeugung einhält. Welcher Lernbereich steht besonders im Vordergrund?",
+      options: [
+        "Der affektive Lernbereich, weil Einstellungen, Werte und Verhalten angesprochen werden.",
+        "Der psychomotorische Lernbereich, weil es nur um Muskelkraft geht.",
+        "Der kognitive Lernbereich, weil ausschließlich Formeln auswendig gelernt werden.",
+        "Kein Lernbereich, weil Arbeitssicherheit nicht pädagogisch relevant ist."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Affektiv betrifft Haltung, Verantwortungsbewusstsein, Werte und Verhalten."
+    },
+    {
+      id: 78,
+      module: "Meister Teil 4",
+      topic: "Ausbildung durchführen",
+      difficulty: "Mittel",
+      question:
+        "Ein Azubi arbeitet besonders engagiert, weil ihn der Beruf wirklich interessiert. Ein anderer strengt sich vor allem wegen Lob und guter Beurteilung an. Welche Einordnung passt?",
+      options: [
+        "Beide handeln ausschließlich intrinsisch motiviert.",
+        "Der erste ist eher intrinsisch motiviert, der zweite eher extrinsisch motiviert.",
+        "Der erste ist extrinsisch motiviert, der zweite intrinsisch motiviert.",
+        "Motivation spielt in der Ausbildung keine Rolle."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Intrinsisch kommt der Antrieb von innen, extrinsisch durch äußere Anreize wie Lob, Geld, Noten oder Druck."
+    },
+    {
+      id: 79,
+      module: "Meister Teil 4",
+      topic: "Ausbildung durchführen",
+      difficulty: "Mittel",
+      question:
+        "Ein neuer Azubi braucht am Anfang klare Anleitung. Später kann er mehr mitentscheiden und zunehmend selbstständig arbeiten. Welcher Führungsansatz passt am besten?",
+      options: [
+        "Ein situativer Führungsstil, weil Führung an Können und Reife des Azubis angepasst wird.",
+        "Ein immer gleicher autoritärer Führungsstil, unabhängig vom Ausbildungsstand.",
+        "Vollständiger Verzicht auf Führung ab dem ersten Tag.",
+        "Ein Führungsstil ist nur bei Gesellen, nicht bei Auszubildenden wichtig."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Situativ bedeutet: am Anfang stärker anleiten, später mehr beteiligen und Verantwortung übertragen."
+    },
+    {
+      id: 80,
+      module: "Meister Teil 4",
+      topic: "Ausbildung durchführen",
+      difficulty: "Leicht",
+      question:
+        "Ein Ausbilder baut eine Unterweisung so auf, dass zuerst einfache und bekannte Inhalte kommen und danach schwierigere neue Inhalte folgen. Welches didaktische Prinzip nutzt er?",
+      options: [
+        "Vom Schweren zum Leichten und vom Unbekannten zum Bekannten.",
+        "Vom Einfachen zum Schweren und vom Bekannten zum Unbekannten.",
+        "Vom Zufälligen zum Beliebigen.",
+        "Nur vom Theoretischen zum Schriftlichen."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Gute Unterweisung knüpft an Bekanntes an und steigert die Schwierigkeit schrittweise."
+    },
+    {
+      id: 81,
+      module: "Meister Teil 4",
+      topic: "Ausbildung durchführen",
+      difficulty: "Mittel",
+      question:
+        "Ein Ausbilder möchte prüfen, ob der Azubi einen Arbeitsschritt wirklich verstanden hat. Welche Fragetechnik ist dafür am ehesten geeignet?",
+      options: [
+        "Nur geschlossene Ja-Nein-Fragen, damit der Azubi möglichst wenig sprechen muss.",
+        "Offene W-Fragen, weil der Azubi erklären und mitdenken muss.",
+        "Gar keine Fragen, weil Nachfragen den Lernprozess stört.",
+        "Suggestivfragen, damit der Azubi automatisch die gewünschte Antwort gibt."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Offene Fragen fördern Denken und Erklären; geschlossene Fragen eignen sich eher zur kurzen Kontrolle."
+    },
+    {
+      id: 82,
+      module: "Meister Teil 4",
+      topic: "Ausbildung durchführen",
+      difficulty: "Mittel",
+      question:
+        "Ein Azubi verbessert sich längere Zeit nicht, obwohl er regelmäßig übt. Der Ausbilder erkennt ein Lernplateau. Welche Reaktion ist pädagogisch am sinnvollsten?",
+      options: [
+        "Ruhe bewahren, Ursachen prüfen, Druck herausnehmen und weiter sinnvoll üben lassen.",
+        "Sofort abbrechen, weil ein Lernplateau beweist, dass Lernen unmöglich ist.",
+        "Den Druck stark erhöhen, weil Stagnation immer Faulheit bedeutet.",
+        "Das Thema bis zur Prüfung vollständig meiden."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Ein Lernplateau ist eine normale zeitweise Stagnation und braucht geduldige, passende Förderung."
+    },
+    {
+      id: 83,
+      module: "Meister Teil 4",
+      topic: "Ausbildung durchführen",
+      difficulty: "Mittel",
+      question:
+        "Bei der Vier-Stufen-Methode befindet sich der Ausbilder in Stufe 2. Was passiert in dieser Phase typischerweise?",
+      options: [
+        "Der Azubi übt allein ohne Beobachtung.",
+        "Der Ausbilder macht vor und erklärt, der Azubi beobachtet aufmerksam.",
+        "Der Azubi bewertet den Ausbilder schriftlich.",
+        "Der Betrieb meldet den Azubi zur Prüfung an."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Stufe 2 ist das Vormachen und Erklären; das Nachmachen kommt erst danach."
+    },
+    {
+      id: 84,
+      module: "Meister Teil 4",
+      topic: "Ausbildung durchführen",
+      difficulty: "Schwer",
+      question:
+        "Ein minderjähriger Azubi hat an einem Berufsschultag mehr als fünf Unterrichtsstunden von mindestens 45 Minuten. Der Betrieb möchte ihn danach noch in die Werkstatt holen. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Das ist immer zulässig, wenn im Betrieb viel Arbeit anfällt.",
+        "Nach einem solchen Berufsschultag darf der Jugendliche grundsätzlich nicht mehr beschäftigt werden; der Tag wird mit acht Stunden angerechnet.",
+        "Berufsschulzeit zählt nie als Ausbildungszeit.",
+        "Die Regel gilt nur für volljährige Auszubildende."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Bei Jugendlichen greift die besondere Anrechnung des Berufsschultags mit mehr als fünf Unterrichtsstunden."
+    },
+    {
+      id: 70,
+      module: "Meister Teil 4",
+      topic: "Ausbildung durchführen",
+      difficulty: "Schwer",
+      question:
+        "Ein Prüfer fragt nach dem Ablauf der vollständigen Handlung. Welche Reihenfolge passt am ehesten zum modernen handlungsorientierten Ausbildungsablauf?",
+      options: [
+        "Ausführen, Bewerten, Informieren, Kontrollieren, Entscheiden, Planen.",
+        "Informieren, Planen, Entscheiden, Ausführen, Kontrollieren, Bewerten.",
+        "Bewerten, Kontrollieren, Entscheiden, Planen, Ausführen, Informieren.",
+        "Vormachen, Nachmachen, Abschreiben, Unterschreiben, Abheften, Vergessen."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Die vollständige Handlung folgt typischerweise den sechs Schritten Informieren, Planen, Entscheiden, Ausführen, Kontrollieren und Bewerten."
+    }
+  ],
+  "Ausbildung abschließen": [
+    {
+      id: 37,
+      module: "Meister Teil 4",
+      topic: "Ausbildung abschließen",
+      difficulty: "Leicht",
+      question:
+        "Ein Azubi fragt kurz vor der Abschlussphase, warum der Ausbildungsnachweis überhaupt regelmäßig geführt werden soll. Welche Antwort passt am ehesten?",
+      options: [
+        "Er dient der Dokumentation des Ausbildungsverlaufs und kann für den weiteren Prüfungsweg bedeutsam sein.",
+        "Er ist nur eine private Erinnerungshilfe ohne Ausbildungsbezug.",
+        "Er ersetzt automatisch jede praktische Unterweisung.",
+        "Er wird ausschließlich von der Berufsschule geführt."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Der Ausbildungsnachweis dokumentiert den Verlauf der Ausbildung. Er ist mehr als nur eine persönliche Notiz."
+    },
+    {
+      id: 38,
+      module: "Meister Teil 4",
+      topic: "Ausbildung abschließen",
+      difficulty: "Mittel",
+      question:
+        "Ein Ausbilder interessiert sich erst kurz vor Prüfungsende dafür, ob der Azubi noch fachliche Lücken hat. Eine systematische Vorbereitung oder Rückschau hat vorher kaum stattgefunden. Welche Bewertung ist am ehesten zutreffend?",
+      options: [
+        "Das ist problematisch, weil Ausbildungsabschluss auch eine geplante Begleitung und Auswertung braucht.",
+        "Das ist ausreichend, weil am Ende nur das Prüfungsergebnis zählt.",
+        "Das ist nur bei kaufmännischen Berufen kritisch.",
+        "Das ist unproblematisch, wenn der Azubi zuverlässig ist."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Ausbildung abschließen bedeutet auch, gezielt vorzubereiten und auszuwerten. Reines Hoffen auf die Prüfung reicht nicht."
+    },
+    {
+      id: 39,
+      module: "Meister Teil 4",
+      topic: "Ausbildung abschließen",
+      difficulty: "Mittel",
+      question:
+        "Ein Betrieb behandelt das Ende der Ausbildung rein verwaltungstechnisch. Ein Gespräch über Entwicklung, weitere Schritte oder Stärken findet nicht statt. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Das ist ausreichend, weil Reflexion am Ende der Ausbildung keinen Nutzen mehr hat.",
+        "Das ist zu kurz gedacht, weil ein Abschluss auch Orientierung und Auswertung beinhalten sollte.",
+        "Das ist nur bei minderjährigen Azubis relevant.",
+        "Das betrifft allein die Kammer."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Ausbildung abschließen ist mehr als reine Formalität. Rückblick und Orientierung gehören sinnvoll dazu."
+    },
+    {
+      id: 40,
+      module: "Meister Teil 4",
+      topic: "Ausbildung abschließen",
+      difficulty: "Schwer",
+      question:
+        "Ein Betrieb behandelt das Ende der Ausbildung ausschließlich als formalen Austritt. Ein abschließendes Reflexionsgespräch über Entwicklung, Stärken und weiteren Weg findet nicht statt. Welche Bewertung passt am ehesten?",
+      options: [
+        "Das ist ausreichend, weil Reflexion am Ende keinen pädagogischen Wert mehr hat.",
+        "Das ist zu kurz gedacht, weil ein geordneter Abschluss auch der Auswertung und Orientierung dient.",
+        "Das ist nur bei minderjährigen Auszubildenden problematisch.",
+        "Das ist nur dann relevant, wenn der Azubi im Betrieb bleibt."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Ein guter Ausbildungsabschluss umfasst auch Auswertung und Orientierung. Gerade das gehört zum pädagogischen Gesamtprozess."
+    },
+    {
+      id: 53,
+      module: "Meister Teil 4",
+      topic: "Ausbildung abschließen",
+      difficulty: "Mittel",
+      question:
+        "Kurz vor der Abschlussprüfung stellt sich heraus, dass ein Auszubildender sein Berichtsheft über Monate kaum geführt hat. Der Ausbilder meint, das spiele für die Prüfung keine Rolle. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Das ist unproblematisch, weil der Ausbildungsnachweis rechtlich ohne jede Bedeutung ist.",
+        "Das kann problematisch werden, weil das ordnungsgemäße Führen des Ausbildungsnachweises zu den Pflichten des Auszubildenden gehört und prüfungsrelevant sein kann.",
+        "Das Berichtsheft ist nur für den Betrieb, nicht für den Prüfungsweg wichtig.",
+        "Für volljährige Auszubildende entfällt die Pflicht zum Ausbildungsnachweis."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Der Ausbildungsnachweis gehört zu den Pflichten des Auszubildenden; fehlende Führung kann im Prüfungszusammenhang Probleme verursachen."
+    },
+    {
+      id: 67,
+      module: "Meister Teil 4",
+      topic: "Ausbildung abschließen",
+      difficulty: "Mittel",
+      question:
+        "Ein Ausbilder verlangt vom Azubi, das Berichtsheft ausschließlich in der Freizeit zu führen, und sieht es monatelang nicht durch. Er meint, dafür sei allein der Azubi verantwortlich. Welche Aussage trifft am ehesten zu?",
+      options: [
+        "Das ist zutreffend, weil der Ausbilder mit dem Ausbildungsnachweis nichts zu tun hat.",
+        "Ausbildende müssen zum Führen des Ausbildungsnachweises anhalten, ihn regelmäßig durchsehen und Gelegenheit zum Führen am Arbeitsplatz geben.",
+        "Ein Ausbildungsnachweis darf aus Datenschutzgründen nicht im Betrieb geführt werden.",
+        "Die Pflicht zur Durchsicht besteht nur bei minderjährigen Auszubildenden."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Nicht nur der Azubi, auch der Ausbildende hat hier Pflichten. Gerade das regelmäßige Durchsehen und die Gelegenheit am Arbeitsplatz werden oft vergessen."
+    },
+    {
+      id: 85,
+      module: "Meister Teil 4",
+      topic: "Ausbildung abschließen",
+      difficulty: "Mittel",
+      question:
+        "Ein Auszubildender besteht die Abschlussprüfung. Der Prüfungsausschuss teilt ihm das Bestehen mündlich am Prüfungstag mit. Wann endet das Ausbildungsverhältnis in diesem Fall?",
+      options: [
+        "Erst am ursprünglich im Vertrag genannten Enddatum.",
+        "Mit Bekanntgabe des Bestehens durch den Prüfungsausschuss.",
+        "Erst nach Aushändigung des gedruckten Prüfungszeugnisses.",
+        "Erst nach Ablauf eines weiteren Monats."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Bei bestandener Abschlussprüfung endet die Ausbildung mit Bekanntgabe des Ergebnisses durch den Prüfungsausschuss."
+    },
+    {
+      id: 86,
+      module: "Meister Teil 4",
+      topic: "Ausbildung abschließen",
+      difficulty: "Schwer",
+      question:
+        "Ein Azubi besteht die Abschlussprüfung nicht und möchte bis zur Wiederholungsprüfung weiter ausgebildet werden. Welche Aussage trifft am ehesten zu?",
+      options: [
+        "Das Ausbildungsverhältnis endet trotzdem immer sofort und kann nie verlängert werden.",
+        "Auf Verlangen des Auszubildenden verlängert sich das Ausbildungsverhältnis bis zur nächstmöglichen Wiederholungsprüfung, höchstens um ein Jahr.",
+        "Nur der Betrieb kann eine Verlängerung verlangen.",
+        "Die Verlängerung ist nur möglich, wenn die Berufsschule zustimmt."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Bei Nichtbestehen kann der Auszubildende die Verlängerung bis zur nächsten Wiederholungsprüfung verlangen, maximal um ein Jahr."
+    },
+    {
+      id: 87,
+      module: "Meister Teil 4",
+      topic: "Ausbildung abschließen",
+      difficulty: "Leicht",
+      question:
+        "Ein Azubi fragt nach dem Unterschied zwischen einfachem und qualifiziertem Ausbildungszeugnis. Welche Antwort passt am ehesten?",
+      options: [
+        "Das einfache Zeugnis enthält nur Art, Dauer und Ziel der Ausbildung; das qualifizierte Zeugnis bewertet zusätzlich Leistung und Verhalten.",
+        "Das qualifizierte Zeugnis enthält weniger Angaben als das einfache Zeugnis.",
+        "Ein Ausbildungszeugnis darf nie Angaben zur Leistung enthalten.",
+        "Ein einfaches Zeugnis gibt es in der Ausbildung nicht."
+      ],
+      correctIndex: 0,
+      explanation:
+        "Richtig ist Antwort A. Das qualifizierte Zeugnis enthält zusätzlich eine Beurteilung von Leistung und Verhalten."
+    },
+    {
+      id: 88,
+      module: "Meister Teil 4",
+      topic: "Ausbildung abschließen",
+      difficulty: "Mittel",
+      question:
+        "Ein Ausbilder sagt, das Berichtsheft sei reine Freizeitaufgabe und für die Prüfungszulassung unwichtig. Welche Bewertung ist am ehesten richtig?",
+      options: [
+        "Das ist richtig, weil der Ausbildungsnachweis keine Bedeutung für die Prüfung hat.",
+        "Das ist falsch; der Ausbildungsnachweis ist prüfungsrelevant und dem Azubi ist Gelegenheit zum Führen während der Ausbildungszeit zu geben.",
+        "Das Berichtsheft wird nur von der Berufsschule geführt.",
+        "Nur minderjährige Azubis müssen ein Berichtsheft führen."
+      ],
+      correctIndex: 1,
+      explanation:
+        "Richtig ist Antwort B. Das Berichtsheft ist wichtiger Ausbildungsnachweis und darf nicht einfach in die Freizeit abgeschoben werden."
+    }
+  ]
+};
+
+const allQuestions = Object.values(questionBank).flat();
+const questionLookup = new Map(allQuestions.map((question) => [question.id, question]));
+const legalQuestionIds = new Set([
+  2, 8, 9, 13, 14, 16, 19, 22, 41, 42, 44, 45, 46, 54, 55, 56, 57, 58, 60, 61, 62, 63, 64, 65
+]);
+
+const consentCheckbox = document.getElementById("consentCheckbox");
+const shuffleCheckbox = document.getElementById("shuffleCheckbox");
+const shuffleAnswersCheckbox = document.getElementById("shuffleAnswersCheckbox");
+const questionCountSelect = document.getElementById("questionCountSelect");
+const startButton = document.getElementById("startButton");
+const restartSavedButton = document.getElementById("restartSavedButton");
+const saveHint = document.getElementById("saveHint");
+const selectionNote = document.getElementById("selectionNote");
+const quizSection = document.getElementById("quizSection");
+const scoreValue = document.getElementById("scoreValue");
+const questionCounter = document.getElementById("questionCounter");
+const moduleBadge = document.getElementById("moduleBadge");
+const topicBadge = document.getElementById("topicBadge");
+const difficultyBadge = document.getElementById("difficultyBadge");
+const progressBar = document.getElementById("progressBar");
+const questionText = document.getElementById("questionText");
+const answerList = document.getElementById("answerList");
+const feedbackBox = document.getElementById("feedbackBox");
+const feedbackTitle = document.getElementById("feedbackTitle");
+const feedbackText = document.getElementById("feedbackText");
+const explanationText = document.getElementById("explanationText");
+const nextButton = document.getElementById("nextButton");
+const restartButton = document.getElementById("restartButton");
+const totalQuestionsValue = document.getElementById("totalQuestionsValue");
+const selectedModulesValue = document.getElementById("selectedModulesValue");
+const selectedTopicsValue = document.getElementById("selectedTopicsValue");
+const leichtCountValue = document.getElementById("leichtCountValue");
+const mittelCountValue = document.getElementById("mittelCountValue");
+const schwerCountValue = document.getElementById("schwerCountValue");
+const moduleSelection = document.getElementById("moduleSelection");
+const topicSelection = document.getElementById("topicSelection");
+const selectAllModulesButton = document.getElementById("selectAllModulesButton");
+const selectAllTopicsButton = document.getElementById("selectAllTopicsButton");
+const clearTopicsButton = document.getElementById("clearTopicsButton");
+const modeAllButton = document.getElementById("modeAllButton");
+const modeLawButton = document.getElementById("modeLawButton");
+const modePart3Button = document.getElementById("modePart3Button");
+const modePart4Button = document.getElementById("modePart4Button");
+const modeBookingButton = document.getElementById("modeBookingButton");
+const jumpStartButton = document.getElementById("jumpStartButton");
+const jumpModuleButton = document.getElementById("jumpModuleButton");
+const startArea = document.getElementById("startArea");
+const moduleSection = document.getElementById("moduleSection");
+const instagramPrivacyBox = document.getElementById("instagramPrivacyBox");
+const instagramImage = document.getElementById("instagramImage");
+const loadInstagramImageButton = document.getElementById("loadInstagramImageButton");
+
+const letters = ["A", "B", "C", "D"];
+let selectedModules = new Set(moduleOrder);
+let selectedTopics = new Set(topicOrder);
+let activeMode = "all";
+let state = buildInitialState([]);
+
+function safeStorageGet(key) {
+  try {
+    return window.localStorage.getItem(key);
+  } catch (error) {
+    return null;
+  }
+}
+
+function safeStorageSet(key, value) {
+  try {
+    window.localStorage.setItem(key, value);
+  } catch (error) {
+    return false;
+  }
+
+  return true;
+}
+
+function safeStorageRemove(key) {
+  try {
+    window.localStorage.removeItem(key);
+  } catch (error) {
+    return false;
+  }
+
+  return true;
+}
+
+function scrollToSection(element) {
+  if (!element) {
+    return;
+  }
+
+  element.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
+function loadInstagramImage(rememberConsent = false) {
+  if (!instagramImage || !instagramPrivacyBox) {
+    return;
+  }
+
+  if (!instagramImage.src) {
+    instagramImage.src = instagramImage.dataset.src;
+  }
+
+  instagramImage.classList.remove("hidden");
+  instagramPrivacyBox.classList.add("hidden");
+
+  if (rememberConsent) {
+    safeStorageSet(EXTERNAL_IMAGE_CONSENT_KEY, "accepted");
+  }
+}
+
+function buildInitialState(order) {
+  return {
+    order,
+    currentQuestionIndex: 0,
+    score: 0,
+    answers: {},
+    finished: false
+  };
+}
+
+function shuffleArray(values) {
+  const copy = [...values];
+
+  for (let index = copy.length - 1; index > 0; index -= 1) {
+    const swapIndex = Math.floor(Math.random() * (index + 1));
+    [copy[index], copy[swapIndex]] = [copy[swapIndex], copy[index]];
+  }
+
+  return copy;
+}
+
+function getAvailableTopics() {
+  return moduleOrder.flatMap((moduleName) =>
+    selectedModules.has(moduleName) ? moduleMeta[moduleName].topics : []
+  );
+}
+
+function normalizeComparableText(value) {
+  return String(value)
+    .normalize("NFKD")
+    .replace(/[^\x20-\x7E]/g, "");
+}
+
+function getQuestionsForTopic(topic) {
+  const normalizedTopic = normalizeComparableText(topic);
+  const topicQuestions = allQuestions.filter(
+    (question) => normalizeComparableText(question.topic) === normalizedTopic
+  );
+  return activeMode === "law"
+    ? topicQuestions.filter((question) => legalQuestionIds.has(question.id))
+    : topicQuestions;
+}
+
+function getQuestionsForModule(moduleName) {
+  return moduleMeta[moduleName].topics.flatMap((topic) => getQuestionsForTopic(topic));
+}
+
+function getSelectableTopics() {
+  const availableTopics = getAvailableTopics();
+  return activeMode === "law"
+    ? availableTopics.filter((topic) => getQuestionsForTopic(topic).length > 0)
+    : availableTopics;
+}
+
+function normalizeTopicSelection() {
+  const availableTopics = new Set(getSelectableTopics());
+  selectedTopics = new Set(
+    [...selectedTopics].filter((topic) => availableTopics.has(topic))
+  );
+
+  if (selectedTopics.size === 0 && availableTopics.size > 0) {
+    selectedTopics = new Set(availableTopics);
+  }
+}
+
+function getActiveQuestions() {
+  return topicOrder.flatMap((topic) =>
+    selectedTopics.has(topic) ? getQuestionsForTopic(topic) : []
+  );
+}
+
+function getQuestionLimit() {
+  return questionCountSelect.value === "all"
+    ? Number.POSITIVE_INFINITY
+    : Number(questionCountSelect.value);
+}
+
+function buildQuestionSequence() {
+  const sequence = getSelectableTopics()
+    .filter((topic) => selectedTopics.has(topic))
+    .flatMap((topic) => getQuestionsForTopic(topic))
+    .map((question) => question.id);
+
+  return (shuffleCheckbox.checked ? shuffleArray(sequence) : sequence).slice(0, getQuestionLimit());
+}
+
+function createOptionOrder(question) {
+  const optionOrder = question.options.map((_, index) => index);
+  return shuffleAnswersCheckbox.checked ? shuffleArray(optionOrder) : optionOrder;
+}
+
+function renderModuleSelection() {
+  moduleSelection.innerHTML = "";
+
+  moduleOrder.forEach((moduleName) => {
+    const moduleQuestions = getQuestionsForModule(moduleName);
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `choice-card card${selectedModules.has(moduleName) ? " selected" : ""}`;
+    button.setAttribute("aria-pressed", selectedModules.has(moduleName) ? "true" : "false");
+    button.innerHTML = `
+      <div class="choice-card-top">
+        <span class="section-label">Modul</span>
+        <span class="choice-status">${selectedModules.has(moduleName) ? "Aktiv" : "Inaktiv"}</span>
+      </div>
+      <h3>${moduleName}</h3>
+      <p>${moduleMeta[moduleName].description}</p>
+      <span class="choice-count">${moduleQuestions.length} Fragen</span>
+    `;
+    button.addEventListener("click", () => toggleModule(moduleName));
+    moduleSelection.appendChild(button);
+  });
+}
+
+function renderTopicSelection() {
+  topicSelection.innerHTML = "";
+
+  getSelectableTopics().forEach((topic) => {
+    const topicQuestions = getQuestionsForTopic(topic);
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = `choice-card card${selectedTopics.has(topic) ? " selected" : ""}`;
+    button.setAttribute("aria-pressed", selectedTopics.has(topic) ? "true" : "false");
+    button.innerHTML = `
+      <div class="choice-card-top">
+        <span class="section-label">${topicMeta[topic].module}</span>
+        <span class="choice-status">${selectedTopics.has(topic) ? "Aktiv" : "Inaktiv"}</span>
+      </div>
+      <h3>${topic}</h3>
+      <p>${topicMeta[topic].description}</p>
+      <span class="choice-count">${topicQuestions.length} Fragen</span>
+    `;
+    button.addEventListener("click", () => toggleTopic(topic));
+    topicSelection.appendChild(button);
+  });
+}
+
+function updateOverviewStats() {
+  const activeQuestions = getActiveQuestions();
+  const leicht = activeQuestions.filter((question) => question.difficulty === "Leicht").length;
+  const mittel = activeQuestions.filter((question) => question.difficulty === "Mittel").length;
+  const schwer = activeQuestions.filter((question) => question.difficulty === "Schwer").length;
+  const plannedQuestions = Math.min(activeQuestions.length, getQuestionLimit());
+
+  totalQuestionsValue.textContent = `${plannedQuestions} Fragen aktiv`;
+  selectedModulesValue.textContent = `${selectedModules.size} Module aktiv`;
+  selectedTopicsValue.textContent = `${selectedTopics.size} Felder aktiv`;
+  leichtCountValue.textContent = `${leicht} Fragen`;
+  mittelCountValue.textContent = `${mittel} Fragen`;
+  schwerCountValue.textContent = `${schwer} Fragen`;
+
+  if (selectedModules.size === 0) {
+    selectionNote.textContent = "Bitte mindestens ein Modul auswählen.";
+  } else if (selectedTopics.size === 0) {
+    selectionNote.textContent = "Bitte mindestens ein Handlungsfeld auswählen.";
+  } else if (activeQuestions.length === 0) {
+    selectionNote.textContent = "Für diese Auswahl sind aktuell keine Fragen im gewählten Modus vorhanden.";
+  } else {
+    selectionNote.textContent =
+      activeMode === "law"
+        ? `Rechtsmodus aktiv: ${selectedTopics.size} Felder, ${plannedQuestions} Rechtsfragen im Durchlauf.`
+        : `${selectedModules.size} Module, ${selectedTopics.size} Felder, ${plannedQuestions} Fragen im Durchlauf.`;
+  }
+}
+
+function updateStartState() {
+  startButton.disabled =
+    selectedModules.size === 0 || selectedTopics.size === 0 || getActiveQuestions().length === 0;
+}
+
+function resetSavedRunNotice(message) {
+  clearState();
+  restartSavedButton.classList.add("hidden");
+  saveHint.textContent = message;
+}
+
+function toggleModule(moduleName) {
+  activeMode = "custom";
+  if (selectedModules.has(moduleName)) {
+    selectedModules.delete(moduleName);
+  } else {
+    selectedModules.add(moduleName);
+  }
+
+  normalizeTopicSelection();
+  renderModuleSelection();
+  renderTopicSelection();
+  renderModeButtons();
+  updateOverviewStats();
+  updateStartState();
+  resetSavedRunNotice("Modulauswahl aktualisiert.");
+}
+
+function toggleTopic(topic) {
+  activeMode = "custom";
+  if (selectedTopics.has(topic)) {
+    selectedTopics.delete(topic);
+  } else {
+    selectedTopics.add(topic);
+  }
+
+  renderTopicSelection();
+  renderModeButtons();
+  updateOverviewStats();
+  updateStartState();
+  resetSavedRunNotice("Handlungsfelder aktualisiert.");
+}
+
+function renderModeButtons() {
+  if (activeMode === "law") {
+    modeAllButton.classList.remove("active");
+    modeLawButton.classList.add("active");
+    modePart3Button.classList.remove("active");
+    modePart4Button.classList.remove("active");
+    modeBookingButton.classList.remove("active");
+    return;
+  }
+
+  if (activeMode === "booking") {
+    modeAllButton.classList.remove("active");
+    modeLawButton.classList.remove("active");
+    modePart3Button.classList.remove("active");
+    modePart4Button.classList.remove("active");
+    modeBookingButton.classList.add("active");
+    return;
+  }
+
+  const onlyPart3 =
+    selectedModules.size === 1 &&
+    selectedModules.has("Meister Teil 3") &&
+    selectedTopics.size === moduleMeta["Meister Teil 3"].topics.length &&
+    moduleMeta["Meister Teil 3"].topics.every((topic) => selectedTopics.has(topic));
+  const onlyPart4 =
+    selectedModules.size === 1 &&
+    selectedModules.has("Meister Teil 4") &&
+    selectedTopics.size === moduleMeta["Meister Teil 4"].topics.length &&
+    moduleMeta["Meister Teil 4"].topics.every((topic) => selectedTopics.has(topic));
+  const allActive =
+    selectedModules.size === moduleOrder.length &&
+    selectedTopics.size === topicOrder.length;
+
+  modeAllButton.classList.toggle("active", allActive);
+  modeLawButton.classList.remove("active");
+  modePart3Button.classList.toggle("active", onlyPart3);
+  modePart4Button.classList.toggle("active", onlyPart4);
+  modeBookingButton.classList.remove("active");
+}
+
+function applyMode(mode) {
+  activeMode = mode;
+
+  if (mode === "law") {
+    selectedModules = new Set(moduleOrder);
+    selectedTopics = new Set(topicOrder.filter((topic) => getQuestionsForTopic(topic).length > 0));
+    resetSavedRunNotice("Rechtsmodus wurde aktiviert.");
+  } else if (mode === "part3") {
+    selectedModules = new Set(["Meister Teil 3"]);
+    selectedTopics = new Set(moduleMeta["Meister Teil 3"].topics);
+    resetSavedRunNotice("Teil 3 wurde als Modus aktiviert.");
+  } else if (mode === "part4") {
+    selectedModules = new Set(["Meister Teil 4"]);
+    selectedTopics = new Set(moduleMeta["Meister Teil 4"].topics);
+    resetSavedRunNotice("Teil 4 / AdA wurde als Modus aktiviert.");
+  } else if (mode === "booking") {
+    selectedModules = new Set(["Meister Teil 3"]);
+    selectedTopics = new Set(["Buchungssätze bilden"]);
+    resetSavedRunNotice("Buchungssätze wurden als Modus aktiviert.");
+  } else {
+    selectedModules = new Set(moduleOrder);
+    selectedTopics = new Set(topicOrder);
+    resetSavedRunNotice("Alle Themen wurden als Modus aktiviert.");
+  }
+
+  renderModuleSelection();
+  renderTopicSelection();
+  renderModeButtons();
+  updateOverviewStats();
+  updateStartState();
+}
+
+function selectAllModules() {
+  activeMode = "custom";
+  selectedModules = new Set(moduleOrder);
+  selectedTopics = new Set(topicOrder);
+  renderModuleSelection();
+  renderTopicSelection();
+  renderModeButtons();
+  updateOverviewStats();
+  updateStartState();
+  resetSavedRunNotice("Alle Module wurden aktiviert.");
+}
+
+function selectAllTopics() {
+  activeMode = "custom";
+  selectedTopics = new Set(getAvailableTopics());
+  renderTopicSelection();
+  renderModeButtons();
+  updateOverviewStats();
+  updateStartState();
+  resetSavedRunNotice("Alle Handlungsfelder wurden aktiviert.");
+}
+
+function clearAllTopics() {
+  activeMode = "custom";
+  selectedTopics = new Set();
+  renderTopicSelection();
+  renderModeButtons();
+  updateOverviewStats();
+  updateStartState();
+  resetSavedRunNotice("Alle Handlungsfelder wurden abgewählt.");
+}
+
+function saveState() {
+  return safeStorageSet(
+    STORAGE_KEY,
+    JSON.stringify({
+      state,
+      consentAccepted: consentCheckbox.checked,
+      shuffleEnabled: shuffleCheckbox.checked,
+      shuffleAnswersEnabled: shuffleAnswersCheckbox.checked,
+      questionCount: questionCountSelect.value,
+      activeMode,
+      selectedModules: [...selectedModules],
+      selectedTopics: [...selectedTopics]
+    })
+  );
+}
+
+function clearState() {
+  safeStorageRemove(STORAGE_KEY);
+}
+
+function renderCurrentQuestion() {
+  const questionId = state.order[state.currentQuestionIndex];
+  const question = questionLookup.get(questionId);
+  const savedAnswer = state.answers[question.id];
+  const progressPercent = (state.currentQuestionIndex / state.order.length) * 100;
+
+  quizSection.classList.remove("hidden");
+  scoreValue.textContent = String(state.score);
+  questionCounter.textContent = `Frage ${state.currentQuestionIndex + 1} von ${state.order.length}`;
+  moduleBadge.textContent = question.module;
+  topicBadge.textContent = question.topic;
+  difficultyBadge.textContent = question.difficulty;
+  progressBar.style.width = `${progressPercent}%`;
+  questionText.textContent = question.question;
+  nextButton.disabled = !savedAnswer || state.finished;
+
+  answerList.innerHTML = "";
+
+  const optionOrder = savedAnswer?.optionOrder || createOptionOrder(question);
+
+  optionOrder.forEach((optionIndex, renderIndex) => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "answer-button";
+    button.disabled = Boolean(savedAnswer);
+    button.dataset.optionIndex = String(optionIndex);
+    button.innerHTML = `<span class="answer-letter">${letters[renderIndex]}</span><span>${question.options[optionIndex]}</span>`;
+    button.addEventListener("click", () => handleAnswer(question, optionOrder, optionIndex));
+
+    if (savedAnswer) {
+      applyAnswerStyles(button, question, optionIndex, savedAnswer.selectedIndex);
+    }
+
+    answerList.appendChild(button);
+  });
+
+  if (savedAnswer) {
+    showFeedback(savedAnswer.isCorrect, question.explanation, question.correctIndex, savedAnswer.optionOrder);
+  } else {
+    hideFeedback();
+  }
+}
+
+function applyAnswerStyles(button, question, optionIndex, selectedIndex) {
+  button.classList.add("revealed");
+
+  if (optionIndex === question.correctIndex) {
+    button.classList.add("correct");
+  } else if (optionIndex === selectedIndex) {
+    button.classList.add("incorrect");
+  }
+}
+
+function getVisibleAnswerLetter(optionOrder, optionIndex) {
+  return letters[optionOrder.indexOf(optionIndex)] || "";
+}
+
+function getCleanExplanation(explanation) {
+  return explanation.replace(/^Richtig ist Antwort [A-D]\.\s*/i, "");
+}
+
+function handleAnswer(question, optionOrder, selectedIndex) {
+  const isCorrect = selectedIndex === question.correctIndex;
+
+  if (!state.answers[question.id]) {
+    state.answers[question.id] = {
+      selectedIndex,
+      isCorrect,
+      optionOrder
+    };
+
+    if (isCorrect) {
+      state.score += 1;
+    }
+
+    saveState();
+  }
+
+  scoreValue.textContent = String(state.score);
+
+  [...answerList.children].forEach((button) => {
+    const optionIndex = Number(button.dataset.optionIndex);
+    button.disabled = true;
+    applyAnswerStyles(button, question, optionIndex, selectedIndex);
+  });
+
+  showFeedback(isCorrect, question.explanation, question.correctIndex, optionOrder);
+  nextButton.disabled = false;
+}
+
+function showFeedback(isCorrect, explanation, correctIndex, optionOrder) {
+  const correctLetter = getVisibleAnswerLetter(optionOrder, correctIndex);
+
+  feedbackBox.classList.remove("hidden", "success", "error");
+  feedbackBox.classList.add(isCorrect ? "success" : "error");
+  feedbackTitle.textContent = isCorrect ? "Richtig" : "Falsch";
+  feedbackText.textContent = isCorrect
+    ? "Ihre Auswahl war korrekt."
+    : `Richtig ist Antwort ${correctLetter}.`;
+  explanationText.textContent = getCleanExplanation(explanation);
+}
+
+function hideFeedback() {
+  feedbackBox.classList.add("hidden");
+  feedbackBox.classList.remove("success", "error");
+}
+
+function finishQuiz() {
+  state.finished = true;
+  clearState();
+  progressBar.style.width = "100%";
+  questionCounter.textContent = `Ergebnis: ${state.score} von ${state.order.length}`;
+  moduleBadge.textContent = "Abschluss";
+  topicBadge.textContent = "Fertig";
+  difficultyBadge.textContent = "Ergebnis";
+  questionText.textContent = "Trainingsrunde abgeschlossen";
+  answerList.innerHTML = `
+    <div class="card choice-card selected">
+      <div class="choice-card-top">
+        <span class="section-label">Ergebnis</span>
+        <span class="choice-status">Fertig</span>
+      </div>
+      <h3>${state.score} von ${state.order.length} richtig</h3>
+      <p>Sie können jetzt andere Module oder Handlungsfelder auswählen und direkt weitertrainieren.</p>
+      <span class="choice-count">${selectedTopics.size} aktive Handlungsfelder</span>
+    </div>
+  `;
+  feedbackBox.classList.remove("hidden", "success", "error");
+  feedbackBox.classList.add(state.score >= Math.ceil(state.order.length * 0.7) ? "success" : "error");
+  feedbackTitle.textContent = "Auswertung";
+  feedbackText.textContent =
+    state.score >= Math.ceil(state.order.length * 0.7)
+      ? "Starker Durchlauf mit guter Prüfungssicherheit."
+      : "Gute Basis. Ein weiterer Durchlauf lohnt sich.";
+  explanationText.textContent =
+    "Die nächste Runde kann mit denselben oder mit anderen Handlungsfeldern gestartet werden.";
+  nextButton.disabled = true;
+}
+
+function goToNextQuestion() {
+  if (state.currentQuestionIndex >= state.order.length - 1) {
+    finishQuiz();
+    return;
+  }
+
+  state.currentQuestionIndex += 1;
+  saveState();
+  renderCurrentQuestion();
+}
+
+function startQuizFromScratch() {
+  const order = buildQuestionSequence();
+
+  if (order.length === 0) {
+    saveHint.textContent = "Bitte zuerst mindestens ein Modul und ein Handlungsfeld auswählen.";
+    return;
+  }
+
+  state = buildInitialState(order);
+  const didSave = saveState();
+  renderCurrentQuestion();
+  scrollToSection(quizSection);
+  saveHint.textContent = didSave
+    ? "Der Fortschritt wird lokal im Browser gespeichert."
+    : "Training gestartet. Im eingebetteten Modus wird der Fortschritt eventuell nicht gespeichert.";
+  restartSavedButton.classList.add("hidden");
+}
+
+function restoreSavedProgress(savedPayload) {
+  activeMode = savedPayload.activeMode || "custom";
+  selectedModules = new Set(
+    savedPayload.selectedModules?.length ? savedPayload.selectedModules : moduleOrder
+  );
+  const defaultTopics = activeMode === "law"
+    ? topicOrder.filter((topic) => getQuestionsForTopic(topic).length > 0)
+    : topicOrder;
+  selectedTopics = new Set(
+    savedPayload.selectedTopics?.length ? savedPayload.selectedTopics : defaultTopics
+  );
+  normalizeTopicSelection();
+  state = savedPayload.state;
+  consentCheckbox.checked = Boolean(savedPayload.consentAccepted);
+  shuffleCheckbox.checked = Boolean(savedPayload.shuffleEnabled);
+  shuffleAnswersCheckbox.checked = savedPayload.shuffleAnswersEnabled !== false;
+  questionCountSelect.value = savedPayload.questionCount || "20";
+  renderModuleSelection();
+  renderTopicSelection();
+  renderModeButtons();
+  updateOverviewStats();
+  updateStartState();
+  renderCurrentQuestion();
+  restartSavedButton.classList.remove("hidden");
+  saveHint.textContent = "Ein früherer Stand wurde geladen.";
+}
+
+function loadSavedState() {
+  const raw = safeStorageGet(STORAGE_KEY);
+
+  if (!raw) {
+    return;
+  }
+
+  try {
+    const parsed = JSON.parse(raw);
+
+    if (!parsed?.state?.order?.length || parsed.state.finished) {
+      clearState();
+      return;
+    }
+
+    restoreSavedProgress(parsed);
+  } catch (error) {
+    clearState();
+  }
+}
+
+consentCheckbox.addEventListener("change", () => {
+  saveHint.textContent = consentCheckbox.checked
+    ? "Hinweis bestätigt."
+    : "Der Hinweis kann bei Bedarf wieder aktiviert werden.";
+});
+shuffleCheckbox.addEventListener("change", () => {
+  updateOverviewStats();
+  updateStartState();
+  resetSavedRunNotice("Reihenfolge aktualisiert.");
+});
+shuffleAnswersCheckbox.addEventListener("change", () => {
+  updateStartState();
+  resetSavedRunNotice("Antwortmischung aktualisiert.");
+});
+questionCountSelect.addEventListener("change", () => {
+  updateOverviewStats();
+  updateStartState();
+  resetSavedRunNotice("Fragenanzahl aktualisiert.");
+});
+startButton.addEventListener("click", startQuizFromScratch);
+nextButton.addEventListener("click", goToNextQuestion);
+restartButton.addEventListener("click", startQuizFromScratch);
+restartSavedButton.addEventListener("click", () => {
+  clearState();
+  startQuizFromScratch();
+});
+modeAllButton.addEventListener("click", () => applyMode("all"));
+modeLawButton.addEventListener("click", () => applyMode("law"));
+modePart3Button.addEventListener("click", () => applyMode("part3"));
+modePart4Button.addEventListener("click", () => applyMode("part4"));
+modeBookingButton.addEventListener("click", () => applyMode("booking"));
+selectAllModulesButton.addEventListener("click", selectAllModules);
+selectAllTopicsButton.addEventListener("click", selectAllTopics);
+clearTopicsButton.addEventListener("click", clearAllTopics);
+jumpStartButton.addEventListener("click", () => scrollToSection(startArea));
+jumpModuleButton.addEventListener("click", () => scrollToSection(moduleSection));
+loadInstagramImageButton.addEventListener("click", () => loadInstagramImage(true));
+
+renderModuleSelection();
+renderTopicSelection();
+renderModeButtons();
+updateOverviewStats();
+updateStartState();
+loadSavedState();
+if (safeStorageGet(EXTERNAL_IMAGE_CONSENT_KEY) === "accepted") {
+  loadInstagramImage();
+}
+    </script>
+  </body>
+</html>
