@@ -6,7 +6,7 @@
     <title>Meister Teil 3 & 4 Lernplattform | Wayand</title>
     <meta
       name="description"
-      content="Prüfungsnahe Lernplattform von Wayand für Teil 3 und 4 mit einfacher Modulauswahl, Fallfragen und direkter Auswertung."
+      content="Prüfungsnahe Lernplattform von Wayand Teil 3 und 4 mit einfacher Modulauswahl, Fallfragen und direkter Auswertung."
     />
     <meta
       name="keywords"
@@ -147,6 +147,10 @@ select {
 .instagram-copy p,
 .score-box span {
   color: var(--muted);
+}
+
+.explanation-text {
+  white-space: pre-line;
 }
 
 .subtitle {
@@ -907,6 +911,8 @@ select {
                 <button id="modePart3Button" class="mode-button" type="button">Teil 3</button>
                 <button id="modePart4Button" class="mode-button" type="button">Teil 4 / AdA</button>
                 <button id="modeBookingButton" class="mode-button" type="button">Buchungssätze</button>
+                <button id="modeSkontoButton" class="mode-button" type="button">Skonto rechnen</button>
+                <button id="modeCapitalButton" class="mode-button" type="button">Kapitalbedarf</button>
               </div>
               <p class="compact-note">
                 Unten können Sie danach noch feiner auswählen, welche Felder Sie heute trainieren möchten.
@@ -1084,7 +1090,7 @@ select {
               <p>
                 Mehr dazu in der
                 <a
-                  href="https://www.malerfachbetrieb-wayand.de/datenschutz#h.z14t3caecvdy"
+                  href="https://www.malerfachbetrieb-wayand.de/datenschutz#h.nxgkrvjx345r"
                   target="_blank"
                   rel="noreferrer"
                 >
@@ -1131,7 +1137,9 @@ const moduleMeta = {
       "Wettbewerbsfähigkeit beurteilen",
       "Gründung und Übernahme planen",
       "Unternehmensführung entwickeln",
-      "Buchungssätze bilden"
+      "Buchungssätze bilden",
+      "Skonto rechnen",
+      "Kapitalbedarf berechnen"
     ]
   },
   "Meister Teil 4": {
@@ -1161,6 +1169,14 @@ const topicMeta = {
   "Buchungssätze bilden": {
     module: "Meister Teil 3",
     description: "Einfache Buchungssätze, Kontenwirkung und typische Zahlungsfälle."
+  },
+  "Skonto rechnen": {
+    module: "Meister Teil 3",
+    description: "Skonto-Ersparnis, Zahlungsbetrag und Kreditvorteil sicher berechnen."
+  },
+  "Kapitalbedarf berechnen": {
+    module: "Meister Teil 3",
+    description: "Kapitalbindung, Arbeitstage, Zahlungsziel und Investitionen berechnen."
   },
   "Ausbildung planen": {
     module: "Meister Teil 4",
@@ -1972,6 +1988,61 @@ const questionBank = {
       correctIndex: 0,
       explanation:
         "Richtig ist Antwort A. Die Schleifmaschine erhöht die Betriebs- und Geschäftsausstattung; weil auf Rechnung gekauft wird, steigen die Verbindlichkeiten."
+    }
+  ],
+  "Skonto rechnen": [
+    {
+      id: 94,
+      module: "Meister Teil 3",
+      topic: "Skonto rechnen",
+      difficulty: "Leicht",
+      question:
+        "Eine Handwerks-GmbH erhält eine Materialrechnung über 35.700,00 € brutto. Die Bedingungen lauten: Zahlung innerhalb von 10 Tagen mit 3 % Skonto oder nach 40 Tagen netto. Wie viel Euro spart der Betrieb, wenn er innerhalb der 10 Tage bezahlt?",
+      options: [
+        "1.039,81 €",
+        "1.428,00 €",
+        "1.071,00 €",
+        "34.629,00 €"
+      ],
+      correctIndex: 2,
+      explanation:
+        "Richtig ist Antwort C.\n\nRechnung:\n35.700,00 € × 3 % = 35.700,00 € × 0,03\n= 1.071,00 € Skonto-Ersparnis\n\nWichtig: Gesucht ist die Ersparnis, nicht der Zahlungsbetrag. 34.629,00 € wäre der Betrag nach Abzug des Skontos."
+    },
+    {
+      id: 95,
+      module: "Meister Teil 3",
+      topic: "Skonto rechnen",
+      difficulty: "Schwer",
+      question:
+        "Bleiben wir beim gleichen Beispiel: 35.700,00 € brutto, 3 % Skonto innerhalb von 10 Tagen oder 40 Tage netto. Das Geschäftskonto ist leer. Der Meister nutzt einen Kontokorrentkredit zu 12 % p.a. für die 30 Tage Zwischenzeit, um Skonto zu ziehen. Wie hoch ist die tatsächliche Schadensbegrenzung, also der reine Vorteil nach Abzug der Bankzinsen?",
+      options: [
+        "1.071,00 €",
+        "714,00 €",
+        "726,00 €",
+        "724,71 €"
+      ],
+      correctIndex: 3,
+      explanation:
+        "Richtig ist Antwort D.\n\nRechnung:\nSkonto: 35.700,00 € × 0,03 = 1.071,00 €\nZahlungsbetrag nach Skonto: 35.700,00 € - 1.071,00 € = 34.629,00 €\nBankzinsen für 30 Tage: 34.629,00 € × 12 % × 30 / 360 = 346,29 €\nReiner Vorteil: 1.071,00 € - 346,29 € = 724,71 €\n\nMerke: Für die Zinsen zählt hier die 30-Tage-Zwischenzeit und die Bank finanziert den Zahlungsbetrag nach Skonto."
+    }
+  ],
+  "Kapitalbedarf berechnen": [
+    {
+      id: 96,
+      module: "Meister Teil 3",
+      topic: "Kapitalbedarf berechnen",
+      difficulty: "Mittel",
+      question:
+        "Ein Meisterbetrieb plant ein neues Projekt. Die vorfinanzierten Aufträge kosten für das gesamte Jahr 288.000,00 €. Der Betrieb rechnet fest mit 240 Arbeitstagen im Jahr. Das Material liegt im Schnitt 15 Tage im Lager. Nach der Lieferung zahlen die Kunden nach genau 20 Tagen. Die einmalige Investitionssumme für Werkzeug beträgt 40.000,00 €. Wie hoch ist der Gesamtkapitalbedarf in Euro für dieses Projekt?",
+      options: [
+        "42.000,00 €",
+        "64.000,00 €",
+        "82.000,00 €",
+        "328.000,00 €"
+      ],
+      correctIndex: 2,
+      explanation:
+        "Richtig ist Antwort C.\n\nRechnung:\nJahreskosten pro Arbeitstag: 288.000,00 € / 240 Tage = 1.200,00 € pro Tag\nKapitalbindungsdauer: 15 Tage Lagerdauer + 20 Tage Zahlungsziel = 35 Tage\nUmlaufkapitalbedarf: 1.200,00 € × 35 Tage = 42.000,00 €\nAnlagekapitalbedarf Werkzeug: 40.000,00 €\nGesamtkapitalbedarf: 42.000,00 € + 40.000,00 € = 82.000,00 €\n\nMerke: Zum Kapitalbedarf gehören hier Umlaufkapital für die gebundene Zeit und die einmalige Investition."
     }
   ],
   "Ausbildung planen": [
@@ -2828,6 +2899,8 @@ const modeLawButton = document.getElementById("modeLawButton");
 const modePart3Button = document.getElementById("modePart3Button");
 const modePart4Button = document.getElementById("modePart4Button");
 const modeBookingButton = document.getElementById("modeBookingButton");
+const modeSkontoButton = document.getElementById("modeSkontoButton");
+const modeCapitalButton = document.getElementById("modeCapitalButton");
 const jumpStartButton = document.getElementById("jumpStartButton");
 const jumpModuleButton = document.getElementById("jumpModuleButton");
 const startArea = document.getElementById("startArea");
@@ -3110,6 +3183,8 @@ function renderModeButtons() {
     modePart3Button.classList.remove("active");
     modePart4Button.classList.remove("active");
     modeBookingButton.classList.remove("active");
+    modeSkontoButton.classList.remove("active");
+    modeCapitalButton.classList.remove("active");
     return;
   }
 
@@ -3119,6 +3194,30 @@ function renderModeButtons() {
     modePart3Button.classList.remove("active");
     modePart4Button.classList.remove("active");
     modeBookingButton.classList.add("active");
+    modeSkontoButton.classList.remove("active");
+    modeCapitalButton.classList.remove("active");
+    return;
+  }
+
+  if (activeMode === "skonto") {
+    modeAllButton.classList.remove("active");
+    modeLawButton.classList.remove("active");
+    modePart3Button.classList.remove("active");
+    modePart4Button.classList.remove("active");
+    modeBookingButton.classList.remove("active");
+    modeSkontoButton.classList.add("active");
+    modeCapitalButton.classList.remove("active");
+    return;
+  }
+
+  if (activeMode === "capital") {
+    modeAllButton.classList.remove("active");
+    modeLawButton.classList.remove("active");
+    modePart3Button.classList.remove("active");
+    modePart4Button.classList.remove("active");
+    modeBookingButton.classList.remove("active");
+    modeSkontoButton.classList.remove("active");
+    modeCapitalButton.classList.add("active");
     return;
   }
 
@@ -3141,6 +3240,8 @@ function renderModeButtons() {
   modePart3Button.classList.toggle("active", onlyPart3);
   modePart4Button.classList.toggle("active", onlyPart4);
   modeBookingButton.classList.remove("active");
+  modeSkontoButton.classList.remove("active");
+  modeCapitalButton.classList.remove("active");
 }
 
 function applyMode(mode) {
@@ -3162,6 +3263,14 @@ function applyMode(mode) {
     selectedModules = new Set(["Meister Teil 3"]);
     selectedTopics = new Set(["Buchungssätze bilden"]);
     resetSavedRunNotice("Buchungssätze wurden als Modus aktiviert.");
+  } else if (mode === "skonto") {
+    selectedModules = new Set(["Meister Teil 3"]);
+    selectedTopics = new Set(["Skonto rechnen"]);
+    resetSavedRunNotice("Skonto rechnen wurde als Modus aktiviert.");
+  } else if (mode === "capital") {
+    selectedModules = new Set(["Meister Teil 3"]);
+    selectedTopics = new Set(["Kapitalbedarf berechnen"]);
+    resetSavedRunNotice("Kapitalbedarf wurde als Modus aktiviert.");
   } else {
     selectedModules = new Set(moduleOrder);
     selectedTopics = new Set(topicOrder);
@@ -3474,6 +3583,8 @@ modeLawButton.addEventListener("click", () => applyMode("law"));
 modePart3Button.addEventListener("click", () => applyMode("part3"));
 modePart4Button.addEventListener("click", () => applyMode("part4"));
 modeBookingButton.addEventListener("click", () => applyMode("booking"));
+modeSkontoButton.addEventListener("click", () => applyMode("skonto"));
+modeCapitalButton.addEventListener("click", () => applyMode("capital"));
 selectAllModulesButton.addEventListener("click", selectAllModules);
 selectAllTopicsButton.addEventListener("click", selectAllTopics);
 clearTopicsButton.addEventListener("click", clearAllTopics);
